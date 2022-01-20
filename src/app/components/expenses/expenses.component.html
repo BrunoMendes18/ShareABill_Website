@@ -1,0 +1,64 @@
+<div class="wrapper">
+
+  <div class="conteiner">
+
+    <div class="box-expense">
+
+      <img src="https://www.freeiconspng.com/thumbs/dollar-icon-png/money-flat-money-png-15.png">
+      <div class="content">
+
+
+      </div>
+    </div>
+
+    <div class="breaker"></div>
+
+    <div class="box-expense">
+
+      <img src="https://www.freeiconspng.com/thumbs/dollar-icon-png/money-flat-money-png-15.png">
+      <div class="content">
+
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+  <div class="box-add">
+    <img id="icon-desp" src="../../../assets/despesas-icon.png">
+    <button id="adicionarDespesa" (click)="teste()" >Adicionar Despesa</button>
+  </div>
+
+
+</div>
+
+<div id="box">
+
+    <span (click)="closePopup()" id="close">X</span>
+  <form>
+  <div class="input-container">
+    <input type="text" required="" name="email" [(ngModel)]="nome" />
+    <label>Nome da despesa</label>
+  </div>
+  <div class="input-container">
+    <input type="password" required="" name="password" [(ngModel)]="quanti" />
+    <label>Valor €</label>
+  </div>
+  <div class="input-container">
+    <input type="text" required="" name="tipo" [(ngModel)]="tipo" />
+    <label>Como dividir a despesa</label>
+  </div>
+  <div class="input-container">
+    <input type="text" required="" name="grupo_id" [(ngModel)]="grupo_id" />
+    <label>Grupo(opcional)</label>
+  </div>
+  <div class="input-container">
+    <input type="text" required="" name="quemPagou" [(ngModel)]="quemPagou" />
+    <label>Quem pagou</label>
+  </div>
+    <button type="button" class="btn" (click)="adicionarDespesa()">Login</button>
+
+</form>
+</div>

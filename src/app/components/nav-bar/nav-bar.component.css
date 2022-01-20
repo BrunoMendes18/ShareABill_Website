@@ -1,0 +1,78 @@
+.nav{
+  height: 50px;
+  width:100%;
+  background-color: black;
+  position:fixed;
+
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.nav-header {
+  display: inline;
+}
+
+.nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 40px;
+}
+
+.nav > .nav-links {
+display:inline;
+margin-left: 200px;
+
+
+  font-size: 18px;
+}
+
+.nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  margin-right: 40px;
+  text-decoration: none;
+  color: #efefef;
+}
+ .nav-links > a:hover{
+  color:#c47135;
+  transition: all 0.25s;
+}
+
+#contacto {
+
+position:relative;
+}
+
+#contacto:before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0px;
+  left: 0px;
+  border-top: 2px solid orangered;
+  border-left: 2px solid orangered;
+  transition: all 0.25s;
+}
+
+#contacto:hover:before,
+#contacto:hover:after {
+  height: 95%;
+  width: 95%;
+}
+
+#contacto:after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: 0px;
+  right: 0px;
+  border-bottom: 2px solid #c47135;
+  border-right: 2px solid #c47135;
+  transition: all 0.25s;
+}
+

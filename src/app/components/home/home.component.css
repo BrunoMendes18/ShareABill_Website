@@ -1,0 +1,158 @@
+.wrapper{
+  width: 100%;
+	min-width: 300px;
+	margin-left: auto;
+
+	margin-bottom: 0px;
+	margin-right: auto;
+	background-color: #ecf0f1;
+	border: 1px #bdc3c7 solid;
+}
+
+.conteiner{
+  margin-top: 50px;
+  padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 8%;
+    margin-left: 8%;
+
+}
+
+#claim {
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-bottom: 20px;
+  text-align: center;
+  min-width: 300px;
+  color: #3498db;
+  font-family: 'Bakbak One', cursive;
+  font-size: 18px;
+
+}
+
+#how{
+  text-align: center;
+}
+
+#howpic {
+  margin-left: auto;
+  width: 40%;
+  height: 200px;
+  margin-right: auto;
+  text-align: center;
+  min-width: 300px;
+  display: inline-block;
+  color: #bdc3c7;
+  font-size: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 20px;
+  vertical-align: top;
+  background-image: url('https://payspacemagazine.com/wp-content/uploads/2018/10/millennials_phone1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#howtext {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  min-width: 200px;
+  display: inline-block;
+  color: #7f8c8d;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: top;
+  margin-top: 20px;
+}
+p {
+  font-family: 'Source Code Pro', monospace;
+  text-align: left;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.breaker{
+  margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 2px;
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(236,240,241,1) 31%,rgba(189,195,199,1) 49%,rgba(236,240,241,1) 69%,rgba(255,255,255,1) 100%);
+
+}
+
+h2{
+  color: #3498db;
+  font-size: 36px;
+
+}
+
+h3{
+  color:white;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 32px;
+}
+
+
+.box{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.89);
+	border-radius:3px;
+	padding:70px 100px;
+}
+
+.input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	color:#fff;
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{
+  border:0;
+  border-bottom:1px solid #555;
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.input-container input:focus{
+ border:none;
+ outline:none;
+ border-bottom:1px solid #e74c3c;
+}
+
+.btn{
+	color:#fff;
+	background-color:#e74c3c;
+	outline: none;
+    border: 0;
+    color: #fff;
+	padding:10px 20px;
+	text-transform:uppercase;
+	margin-top:50px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+
+}

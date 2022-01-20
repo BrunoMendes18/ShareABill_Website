@@ -1,0 +1,29 @@
+<div class="wrapper">
+
+  <div class="conteiner">
+    <div class="snow1"></div>
+    <div class="snow2"></div>
+    <div class="box">
+      <form>
+        <div class="input-container">
+          <input type="text" required="" name="name"  [(ngModel)]="name" />
+          <label>Name</label>
+        </div>
+      <div class="input-container">
+        <input type="text" required="" name="email"  [(ngModel)]="email" />
+        <label>Email</label>
+      </div>
+      <div class="input-container">
+        <input type="password" required="" name="password" [(ngModel)]="password" />
+        <label>Password</label>
+      </div>
+        <button type="button" class="btn" (click)="registar()">Registar</button>
+
+    </form>
+    <p>Já tem conta? <a [routerLink]="['/login']" routerLinkActive="active">Login!</a> </p>
+    </div>
+
+
+  </div>
+
+</div>

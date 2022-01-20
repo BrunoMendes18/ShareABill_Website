@@ -1,0 +1,61 @@
+#lupa{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-top: -5vh;
+    margin-left: 150vh;
+}
+
+#add-user{
+    position: relative; 
+    width: 50px;
+    height: 50px;
+    margin-top: 0vh;
+    margin-left: 150vh;
+}
+
+#filter{
+    position: relative; 
+    width: 50px;
+    height: 50px;
+    margin-top: 3vh;
+    margin-left: 150vh;
+}
+
+#user{
+    position: absolute; 
+    width: 50px;
+    height: 50px;
+    margin-top: -9vh;
+    margin-left: 65vh;
+}
+
+#input{
+    position: relative; 
+    margin-top: 12.5vh;
+    margin-left: 60vh;
+    width: 650px;
+    height: 25px;
+}
+
+#divAmigo1{
+    position: relative; 
+    border-radius: 12.5px;
+  background: #DCDCDC;
+  width: 650px;
+  height: 100px;  
+  margin-top: -9vh;
+  margin-left: 60vh;
+}
+
+#texto1{
+    position: relative;
+    margin-top: -12.5vh;
+    margin-left: 75vh;
+}
+
+#email1{
+    position: relative;
+    margin-top: 0vh;
+    margin-left: 75vh;
+}

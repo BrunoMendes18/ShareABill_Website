@@ -1,0 +1,9 @@
+<div class="oi"></div>
+
+<div *ngFor="let x of grupos" class="grupo" (click)="verGrupo(x.id)">
+  <h1>{{x.nome}}</h1>
+</div>
+
+<div class="grupo" (click)="verGrupo(0)">
+  <h1>Contas não associadas</h1>
+</div>

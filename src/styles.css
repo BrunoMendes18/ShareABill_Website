@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap%27');
+
+*{
+margin-left:0;
+margin-right: 0;
+ box-sizing: border-box;
+}
+body { margin: 0 auto;
+	height:auto !important; /* real browsers */
+	height:100%; /* IE6: treaded as min-height*/
+	min-height:100%; /* real browsers */
+	background-color: #fff;
+	}
+
+  .wrapper{
+    width: 100%;
+    min-width: 300px;
+    margin-left: auto;
+
+    margin-bottom: 0px;
+    margin-right: auto;
+    background-color: #ecf0f1;
+    border: 1px #bdc3c7 solid;
+  }
+
+  .conteiner{
+    margin-top: 50px;
+    padding-right: 15px;
+      padding-left: 15px;
+      margin-right: 8%;
+      margin-left: 8%;
+
+  }

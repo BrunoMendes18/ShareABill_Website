@@ -1,0 +1,36 @@
+<div class="wrapper">
+
+  <div class="conteiner">
+    <div class="snow1"></div>
+    <div class="snow2"></div>
+    <div class="box">
+      <form>
+      <div class="input-container">
+        <input type="text" required="" name="email"  [(ngModel)]="email" />
+        <label>Email</label>
+      </div>
+      <div class="input-container">
+        <input type="password" required="" name="password" [(ngModel)]="password" />
+        <label>Password</label>
+      </div>
+        <button type="button" class="btn" (click)="logIn()">Login</button>
+
+    </form>
+    <p>Não tem conta ainda? <a [routerLink]="['/registar']" routerLinkActive="active">Registre-se!</a> </p>
+    </div>
+
+
+   <!--<div class="form">
+      <input [(ngModel)]="email" type="text" placeholder="Email" required>
+      <input [(ngModel)]="password" type="password" placeholder="Password" required>
+      <button (click)="logIn()">LogIn</button>
+       <p>Se não tens conta regista <a [routerLink]="['/registar']">aqui</a></p>
+    </div>-->
+
+
+  </div>
+
+</div>
+
+
+
