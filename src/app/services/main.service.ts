@@ -31,10 +31,12 @@ export class MainService {
       })
     };
 
-    this.linkGrupos = this.linkGrupos + '/1/' + this.userId ;
+    const link = this.linkGrupos + '/1/' + this.userId ;
 
-    console.log('EndPoint - '+ this.linkGrupos)
+    console.log('EndPoint - '+ link)
 
-    return this.http.get(this.linkGrupos, httpOptions);
+    const teste = this.http.get(link, httpOptions);
+    console.log('Teste - ' + teste);
+    return teste;
   }
 }

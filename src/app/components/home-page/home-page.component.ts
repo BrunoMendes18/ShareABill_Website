@@ -37,9 +37,10 @@ export class HomePageComponent implements OnInit {
     this.pedir.seeGrupos()
     .subscribe(arg => {
       console.log('O')
-      console.log('O - ' + arg)
+      console.log(arg)
       this.grupos = arg;
-      console.log('OI - ' + this.grupos)
+      console.log('OI - ')
+      console.log(this.grupos)
     });
   }
 
