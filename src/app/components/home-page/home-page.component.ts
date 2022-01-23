@@ -10,7 +10,7 @@ import { MainService } from 'src/app/services/main.service';
 export class HomePageComponent implements OnInit {
 
   router: Router;
-  grupos:any;
+  grupos: any;
 
   constructor(private pedir : MainService ,router: Router) { this.router = router }
 
@@ -21,16 +21,26 @@ export class HomePageComponent implements OnInit {
       return '';
     }; */
 
-    if(!localStorage.getItem("user-token")) {
+    if(!localStorage.getItem("user-token") && !localStorage.getItem("user-id")) {
       this.router.navigate(['/login'])
-    }
+    } else if (!this.pedir.userToken && !this.pedir.userId) {
+      this.pedir.userToken = localStorage.getItem("user-token");
+      this.pedir.userId = localStorage.getItem("user-id");
+    };
 
-      this.pedir.seeGrupos()
-      .subscribe(arg => {
-        this.grupos = arg;
-        console.log(arg)
-      })
+    console.log('OII - ' + this.grupos);
 
+    this.verGrupos();
+  }
+
+  verGrupos() {
+    this.pedir.seeGrupos()
+    .subscribe(arg => {
+      console.log('O')
+      console.log('O - ' + arg)
+      this.grupos = arg;
+      console.log('OI - ' + this.grupos)
+    });
   }
 
   verGrupo(id: any) {
