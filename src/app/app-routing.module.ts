@@ -7,6 +7,7 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
+import { FormComponent } from './components/friends/form/form.component';
 
 const routes: Routes = [
   {path: "", component : HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "grupo", component: GrupoComponent},
   {path: "friends",component: FriendsComponent},
   {path: "expenses",component: ExpensesComponent},
+  {path: "form",component: FormComponent},
 ];
 
 @NgModule({

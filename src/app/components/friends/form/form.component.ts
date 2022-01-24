@@ -3,24 +3,18 @@ import { Router } from '@angular/router';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
-  selector: 'app-friends',
-  templateUrl: './friends.component.html',
-  styleUrls: ['./friends.component.css']
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
 })
-export class FriendsComponent implements OnInit {
+export class FormComponent implements OnInit {
 
   router: Router;
   resultado:any;
 
   constructor(private pedir : MainService ,router: Router) { this.router = router }
 
-
   ngOnInit(): void {
-/*     window.onbeforeunload = () => {
-      localStorage.removeItem('user-token');
-      return '';
-    }; */
-
     if(!localStorage.getItem("user-token") && !localStorage.getItem("user-id")) {
       this.router.navigate(['/login'])
     } else if (!this.pedir.userToken && !this.pedir.userId) {
@@ -29,24 +23,15 @@ export class FriendsComponent implements OnInit {
     };
 
     console.log('OII - ' + this.pedir.userId);
-
-    this.verAmigos();
+    this.verUsers();
   }
 
-  verAmigos() {
-    this.pedir.seeAmigos()
+  verUsers() {
+    this.pedir.seeUsers()
     .subscribe(data => {
       this.resultado=data;
       console.log(this.resultado)
     });
   }
-
- 
-
-  verAmigo(id: any) {
-    localStorage.setItem('idAmigo', id);
-  }
-
-  
 
 }

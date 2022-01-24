@@ -10,6 +10,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegistarComponent } from './components/registar/registar.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
+import { FormComponent } from './components/friends/form/form.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ExpensesComponent } from './components/expenses/expenses.component';
     RegistarComponent,
     FriendsComponent,
     ExpensesComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
