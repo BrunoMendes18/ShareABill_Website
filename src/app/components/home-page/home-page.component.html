@@ -1,14 +1,17 @@
 <div class="oi"></div>
 
-<div class="grupo">
-  <div *ngFor="let x of grupos">
-    <h1 (click)="verGrupo(x.id)">{{x.nome}}</h1>
-  </div>
+<div class="grupo" *ngFor="let x of grupos">
+  <h1 (click)="verGrupo(x.id)">{{x.nome}}</h1>
 </div>
-
 
 <div class="grupo" (click)="verGrupo(0)">
   <h1>Contas não associadas</h1>
 </div>
 
-<button (click)="verGrupos()">Olá</button>
+<button (click)="verGrupo(-1)">Criar Grupo</button>
+
+<div [ngStyle]="{display: display}" class="formGrupo">
+  <input [(ngModel)]="name" type="text" placeholder="Name" required>
+  <input [(ngModel)]="desc" type="text" placeholder="Descrição" required>
+  <button (click)="criarGrupo()">Registar</button>
+</div>

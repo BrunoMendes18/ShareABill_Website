@@ -11,6 +11,10 @@ export class HomePageComponent implements OnInit {
 
   router: Router;
   grupos: any;
+  display = "none";
+  name: any;
+  desc: any;
+  idGrupo: any;
 
   constructor(private pedir : MainService ,router: Router) { this.router = router }
 
@@ -36,8 +40,6 @@ export class HomePageComponent implements OnInit {
   verGrupos() {
     this.pedir.seeGrupos()
     .subscribe(arg => {
-      console.log('O')
-      console.log(arg)
       this.grupos = arg;
       console.log('OI - ')
       console.log(this.grupos)
@@ -45,8 +47,27 @@ export class HomePageComponent implements OnInit {
   }
 
   verGrupo(id: any) {
-    localStorage.setItem('idGrupo', id);
-    this.router.navigate(['/grupo']);
+    if (id == -1) {
+      if (this.display == "none") {
+        this.display = "block";
+      } else {
+        this.display = "none";
+      }
+    } else {
+      localStorage.setItem('idGrupo', id);
+      this.router.navigate(['/grupo']);
+    }
+  }
+
+  criarGrupo() {
+    this.pedir.criarGrupo(this.name, this.desc)
+    .subscribe(arg => {
+      this.idGrupo = arg;
+      console.log('Resultado' + arg)
+      console.log('Resultado!' + this.idGrupo)
+    });
+
+    this.verGrupos();
   }
 
 }

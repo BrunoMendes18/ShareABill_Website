@@ -39,4 +39,17 @@ export class MainService {
     console.log('Teste - ' + teste);
     return teste;
   }
+
+  criarGrupo(nome: string, desc: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkGrupos + '/' + this.userId;
+
+    return this.http.post(link, ({ nome: nome, desc: desc, data: new Date(), admin: this.userId }), httpOptions);
+  }
 }
