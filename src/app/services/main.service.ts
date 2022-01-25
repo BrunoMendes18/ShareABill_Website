@@ -11,9 +11,12 @@ export class MainService {
   linkLogin = "/api/auth/signin";
   linkRegistar = "/api/auth/signup";
   linkGrupos = "api/v1/grupo";
+  linkAmigos = "api/v1/amigos/";
+  linkUsers = "api/v1/users/";
 
   userToken : string | null ="";
   userId: any;
+  user_id1: any;
 
   doLogIn(email: string, password: string){
     return this.http.post(this.linkLogin, ({email: email, password: password}));
@@ -52,4 +55,27 @@ export class MainService {
 
     return this.http.post(link, ({ nome: nome, desc: desc, data: new Date(), admin: this.userId }), httpOptions);
   }
+  seeAmigos(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    return this.http.get(this.linkAmigos + '/' + this.userId , httpOptions);
+  }
+
+  seeUsers(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.http.get(this.linkUsers, httpOptions);
+    return link;
+  }
 }
+
