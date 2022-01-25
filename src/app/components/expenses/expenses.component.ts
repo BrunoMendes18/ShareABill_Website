@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-expenses',
@@ -9,17 +11,19 @@ export class ExpensesComponent implements OnInit {
 
 
   nome ="";
-  quanti ="";
-  tipo = 1;
-  grupo_id : any;
-  quemPagou : any;
+  quanti :number =0;
+  tipo: number = 1;
+  grupo_id : number|null=1;
+  quemPagou : number=1;
 
   closepopup :any ;
   popup:any;
 
+  router: Router;
 
+  resultado:any;
 
-  constructor() { }
+  constructor(private pedir : MainService, router : Router) { this.router = router}
 
 
   ngOnInit(): void {
@@ -29,6 +33,10 @@ export class ExpensesComponent implements OnInit {
 
   adicionarDespesa(){
     console.log('despesa');
+    this.pedir.insertDespesav1(this.nome,this.quanti,this.tipo,this.grupo_id,this.quemPagou).subscribe(arg =>{
+      this.resultado = arg;
+      console.log(this.resultado);
+    })
   }
 
   teste(){
