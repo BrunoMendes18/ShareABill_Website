@@ -32,8 +32,6 @@ export class HomePageComponent implements OnInit {
       this.pedir.userId = localStorage.getItem("user-id");
     };
 
-    console.log('OII - ' + this.grupos);
-
     this.verGrupos();
   }
 
@@ -41,8 +39,6 @@ export class HomePageComponent implements OnInit {
     this.pedir.seeGrupos()
     .subscribe(arg => {
       this.grupos = arg;
-      console.log('OI - ')
-      console.log(this.grupos)
     });
   }
 
@@ -63,11 +59,20 @@ export class HomePageComponent implements OnInit {
     this.pedir.criarGrupo(this.name, this.desc)
     .subscribe(arg => {
       this.idGrupo = arg;
-      console.log('Resultado' + arg)
-      console.log('Resultado!' + this.idGrupo)
     });
 
     this.verGrupos();
+  }
+
+  pesquisa(teste: any) {
+    if (teste.length >= 3) {
+      this.pedir.pesquisarGrupo(teste).subscribe(arg => {
+        this.grupos = arg;
+      });
+    } else {
+      this.verGrupos();
+    }
+
   }
 
 }

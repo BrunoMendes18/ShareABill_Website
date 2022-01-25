@@ -9,6 +9,7 @@
 </div>
 
 <button (click)="verGrupo(-1)">Criar Grupo</button>
+<input (input)='pesquisa(pesquisar.value)' #pesquisar placeholder="Pesquisar Grupo">
 
 <div [ngStyle]="{display: display}" class="formGrupo">
   <input [(ngModel)]="name" type="text" placeholder="Name" required>

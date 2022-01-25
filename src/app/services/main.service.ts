@@ -77,5 +77,19 @@ export class MainService {
     const link = this.http.get(this.linkUsers, httpOptions);
     return link;
   }
+
+  pesquisarGrupo(valor: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkGrupos + '/3/' + this.userId + '/' + valor;
+
+    return this.http.get(link, httpOptions);
+  }
+
 }
 
