@@ -17,7 +17,7 @@ export class MainService {
 
   userToken : string | null ="";
   userId: any;
-  user_id1: any;
+  grupoId: any;
 
   doLogIn(email: string, password: string){
     return this.http.post(this.linkLogin, ({email: email, password: password}));
@@ -105,18 +105,28 @@ export class MainService {
     return this.http.post(this.linkDespesas,({nome: name,quanti:quantidade,tipo:tipoo,grupo_id:grupoid,pago:qpago}),httpOptions);
   }
 
-  verGrupo (id: any) {
+  verGrupo () {
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': 'Bearer ' + this.userToken,
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    const link = this.linkGrupos + '2/' + id;
+    const link = this.linkGrupos + '2/' + this.grupoId;
 
     return this.http.get(link, httpOptions);
   }
 
+  verDespesasGrupo() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    const link = this.linkDespesas + '2/' + this.grupoId;
 
+    return this.http.get(link, httpOptions);
+  }
 }
 

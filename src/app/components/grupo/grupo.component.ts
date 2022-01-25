@@ -26,19 +26,25 @@ export class GrupoComponent implements OnInit {
     } else if (!this.pedir.userToken && !this.pedir.userId) {
       this.pedir.userToken = localStorage.getItem("user-token");
       this.pedir.userId = localStorage.getItem("user-id");
+      this.pedir.grupoId = localStorage.getItem('idGrupo');
     };
 
-    this.pedir.verGrupo(localStorage.getItem('idGrupo')).subscribe(arg => {
+    this.pedir.verGrupo().subscribe(arg => {
       this.dadosGrupo = arg;
     })
+
+    this.verDespesas();
   }
 
   verDespesas() {
-
+    this.pedir.verDespesasGrupo().subscribe(arg => {
+      console.log(arg);
+      this.despesas = arg;
+    })
   }
 
   verDespesa(id: any) {
-    console.log('Not Working');
+    console.log('Not Working ' + id);
   }
 
 }

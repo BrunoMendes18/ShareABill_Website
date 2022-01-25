@@ -4,6 +4,6 @@
 <h3>{{dadosGrupo[0].desc}}</h3>
 
 <div class="grupo" *ngFor="let x of despesas" (click)="verDespesa(x.id)">
-  <h1>{{x.nome}}</h1>
-  <h3>{{x.desc}}</h3>
+  <h2>{{x.nome}}</h2>
+  <h3>{{x.quanti}} €</h3>
 </div>
