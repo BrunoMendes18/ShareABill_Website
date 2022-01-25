@@ -2,3 +2,13 @@
   width: 100%;
   height: 50px;
 }
+
+.esquerda {
+  display: inline-block;
+  width: 75%;
+}
+
+.direita {
+  display: inline-block;
+  width: 25%;
+}

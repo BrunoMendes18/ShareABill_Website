@@ -128,5 +128,18 @@ export class MainService {
 
     return this.http.get(link, httpOptions);
   }
+
+  sairEliminarGrupo() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkGrupos + this.grupoId + '/' + this.userId;
+
+    return this.http.delete(link, httpOptions);
+  }
 }
 

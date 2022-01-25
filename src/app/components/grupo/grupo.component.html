@@ -1,9 +1,16 @@
 <div class="espacamento"></div>
 
-<h1>{{dadosGrupo[0].nome}}</h1>
-<h3>{{dadosGrupo[0].desc}}</h3>
+<div class="esquerda">
+  <h1>{{dadosGrupo[0].nome}}</h1>
+  <h3>{{dadosGrupo[0].desc}}</h3>
 
-<div class="grupo" *ngFor="let x of despesas" (click)="verDespesa(x.id)">
-  <h2>{{x.nome}}</h2>
-  <h3>{{x.quanti}} €</h3>
+  <div class="grupo" *ngFor="let x of despesas" (click)="verDespesa(x.id)">
+    <h2>{{x.nome}}</h2>
+    <h3>{{x.quanti}} €</h3>
+  </div>
 </div>
+
+<div class="direita">
+  <button (click)="sairEliminarGrupo()">{{sairEliminar}}</button>
+</div>
+

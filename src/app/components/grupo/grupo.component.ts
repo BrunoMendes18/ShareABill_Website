@@ -13,6 +13,7 @@ export class GrupoComponent implements OnInit {
   tipoPagina: any;
   dadosGrupo: any;
   despesas: any;
+  sairEliminar: string = "Sair";
 
   constructor(private pedir: MainService ,router: Router) { this.router = router }
 
@@ -31,20 +32,38 @@ export class GrupoComponent implements OnInit {
 
     this.pedir.verGrupo().subscribe(arg => {
       this.dadosGrupo = arg;
-    })
+      console.log(this.dadosGrupo[0].admin);
+      console.log(this.pedir.userId)
 
-    this.verDespesas();
+      console.log(this.dadosGrupo.admin == this.pedir.userId)
+      if(this.dadosGrupo[0].admin == this.pedir.userId) {
+        this.sairEliminar = 'Eliminar';
+        console.log('True')
+      } else {
+        this.sairEliminar = 'Sair';
+        console.log('False')
+      }
+
+    });
+
+    this.verDespesasOutros();
   }
 
-  verDespesas() {
+  verDespesasOutros() {
     this.pedir.verDespesasGrupo().subscribe(arg => {
       console.log(arg);
       this.despesas = arg;
-    })
+    });
   }
 
   verDespesa(id: any) {
     console.log('Not Working ' + id);
+  }
+
+  sairEliminarGrupo() {
+    this.pedir.sairEliminarGrupo().subscribe(arg => {
+      console.log(arg)
+    })
   }
 
 }
