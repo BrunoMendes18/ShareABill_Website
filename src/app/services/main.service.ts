@@ -11,6 +11,7 @@ export class MainService {
   linkLogin = "/api/auth/signin";
   linkRegistar = "/api/auth/signup";
   linkGrupos = "api/v1/grupo/";
+  linkDespesas = "api/v1/despesas/"
 
   userToken : string | null ="";
   userId: any;
@@ -51,5 +52,18 @@ export class MainService {
     this.linkGrupos = this.linkGrupos + '?user_id=' + this.userId;
 
     return this.http.get(this.linkGrupos, httpOptions); // {params: {'user_id': this.userId}}, / , httpOptions / ({ user_id: this.userId }) /  {headers, reqBodyObj}
+  }
+
+  insertDespesav1(name:string ,quantidade: number, tipoo: number,grupoid: number|null , qpago:number)
+  {
+    console.log('Existe: ',this.userToken);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    return this.http.post(this.linkDespesas,({nome: name,quanti:quantidade,tipo:tipoo,grupo_id:grupoid,pago:qpago}),httpOptions);
   }
 }
