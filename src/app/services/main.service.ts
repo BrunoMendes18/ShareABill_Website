@@ -52,7 +52,7 @@ export class MainService {
       })
     };
 
-    const link = this.linkGrupos + '/' + this.userId;
+    const link = this.linkGrupos + this.userId;
 
     return this.http.post(link, ({ nome: nome, desc: desc, data: new Date(), admin: this.userId }), httpOptions);
   }
@@ -87,7 +87,7 @@ export class MainService {
       })
     };
 
-    const link = this.linkGrupos + '/3/' + this.userId + '/' + valor;
+    const link = this.linkGrupos + '3/' + this.userId + '/' + valor;
 
     return this.http.get(link, httpOptions);
   }
@@ -104,5 +104,19 @@ export class MainService {
 
     return this.http.post(this.linkDespesas,({nome: name,quanti:quantidade,tipo:tipoo,grupo_id:grupoid,pago:qpago}),httpOptions);
   }
+
+  verGrupo (id: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    const link = this.linkGrupos + '2/' + id;
+
+    return this.http.get(link, httpOptions);
+  }
+
+
 }
 

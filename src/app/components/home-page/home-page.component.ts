@@ -59,9 +59,9 @@ export class HomePageComponent implements OnInit {
     this.pedir.criarGrupo(this.name, this.desc)
     .subscribe(arg => {
       this.idGrupo = arg;
+      this.verGrupos();
     });
 
-    this.verGrupos();
   }
 
   pesquisa(teste: any) {

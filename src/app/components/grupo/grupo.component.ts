@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-grupo',
@@ -10,16 +11,34 @@ export class GrupoComponent implements OnInit {
 
   router: Router;
   tipoPagina: any;
+  dadosGrupo: any;
+  despesas: any;
 
-  constructor(router: Router) { this.router = router }
+  constructor(private pedir: MainService ,router: Router) { this.router = router }
 
   ngOnInit(): void {
     this.tipoPagina = localStorage.getItem('idGrupo');
+
     if(!this.tipoPagina) {
       this.router.navigate(['/home']);
-    } else {
-      alert('Estás a ver o grupo ' + this.tipoPagina)
-    }
+    } else if(!localStorage.getItem("user-token") && !localStorage.getItem("user-id")) {
+      this.router.navigate(['/login'])
+    } else if (!this.pedir.userToken && !this.pedir.userId) {
+      this.pedir.userToken = localStorage.getItem("user-token");
+      this.pedir.userId = localStorage.getItem("user-id");
+    };
+
+    this.pedir.verGrupo(localStorage.getItem('idGrupo')).subscribe(arg => {
+      this.dadosGrupo = arg;
+    })
+  }
+
+  verDespesas() {
+
+  }
+
+  verDespesa(id: any) {
+    console.log('Not Working');
   }
 
 }
