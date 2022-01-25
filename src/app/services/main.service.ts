@@ -12,9 +12,12 @@ export class MainService {
   linkRegistar = "/api/auth/signup";
   linkGrupos = "api/v1/grupo/";
   linkDespesas = "api/v1/despesas/"
+  linkAmigos = "api/v1/amigos/";
+  linkUsers = "api/v1/users/";
 
   userToken : string | null ="";
   userId: any;
+  user_id1: any;
 
   doLogIn(email: string, password: string){
     return this.http.post(this.linkLogin, ({email: email, password: password}));
@@ -25,33 +28,55 @@ export class MainService {
   }
 
   seeGrupos(){
-   /*  let headers = new HttpHeaders();
-    let body = new HttpParams();
-
-    const authorization = 'bearer ' + this.userToken;
-
-    headers = headers.append('authorization', authorization); */
-    let reqBodyObj = {'user_id': this.userId}
-
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': 'Bearer ' + this.userToken,
         'Content-Type': 'application/json; charset=utf-8'
-      })/*
-      body: new HttpParams({
-        'fromObject': reqBodyObj,
-      }),
-      responseType: 'text' as 'json'*/
+      })
     };
 
-    console.log(httpOptions);
+    const link = this.linkGrupos + '/1/' + this.userId ;
 
-    console.log('token - '+ this.userToken);
-    console.log('id - '+ this.userId);
+    console.log('EndPoint - '+ link)
 
-    this.linkGrupos = this.linkGrupos + '?user_id=' + this.userId;
+    const teste = this.http.get(link, httpOptions);
+    console.log('Teste - ' + teste);
+    return teste;
+  }
 
-    return this.http.get(this.linkGrupos, httpOptions); // {params: {'user_id': this.userId}}, / , httpOptions / ({ user_id: this.userId }) /  {headers, reqBodyObj}
+  criarGrupo(nome: string, desc: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkGrupos + '/' + this.userId;
+
+    return this.http.post(link, ({ nome: nome, desc: desc, data: new Date(), admin: this.userId }), httpOptions);
+  }
+  seeAmigos(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    return this.http.get(this.linkAmigos + '/' + this.userId , httpOptions);
+  }
+
+  seeUsers(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.http.get(this.linkUsers, httpOptions);
+    return link;
   }
 
   insertDespesav1(name:string ,quantidade: number, tipoo: number,grupoid: number|null , qpago:number)
@@ -67,3 +92,4 @@ export class MainService {
     return this.http.post(this.linkDespesas,({nome: name,quanti:quantidade,tipo:tipoo,grupo_id:grupoid,pago:qpago}),httpOptions);
   }
 }
+
