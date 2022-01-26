@@ -11,6 +11,7 @@ export class FriendsComponent implements OnInit {
 
   router: Router;
   resultado:any;
+  resultado1:any;
   i:any;
 
   constructor(private pedir : MainService ,router: Router) { this.router = router }
@@ -40,6 +41,17 @@ export class FriendsComponent implements OnInit {
       this.resultado=data;
       console.log('OI - ')
       console.log(this.resultado)
+      this.verUsers()
+
+
+    });
+  }
+
+  verUsers() {
+    this.pedir.seeUsers()
+    .subscribe(data => {
+      this.resultado1=data;
+      console.log(this.resultado1)
     });
   }
 
@@ -51,6 +63,9 @@ export class FriendsComponent implements OnInit {
       })
     }
   }
+
+  
+
 
   
 

@@ -18,7 +18,9 @@ export class MainService {
 
   userToken : string | null ="";
   userId: any;
+  userId2: any;
   grupoId: any;
+
 
   doLogIn(email: string, password: string){
     return this.http.post(this.linkLogin, ({email: email, password: password}));
@@ -76,7 +78,20 @@ export class MainService {
       })
     };
 
-    return this.http.delete(this.linkAmigos + '/' + id , httpOptions);
+    return this.http.delete(this.linkAmigos +id , httpOptions);
+  }
+
+  AddAmigo(id1:number,id2:number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkAmigos + '1/' + this.userId + '/' + this.userId2;
+
+    return this.http.post(link, ({ id1:this.userId,id2:this.userId2 }), httpOptions);
   }
 
   seeUsers(){
@@ -100,6 +115,19 @@ export class MainService {
     };
 
     const link = this.linkGrupos + '3/' + this.userId + '/' + valor;
+
+    return this.http.get(link, httpOptions);
+  }
+
+  pesquisarUser(valor: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkUsers + valor;
 
     return this.http.get(link, httpOptions);
   }
