@@ -23,6 +23,11 @@ export class ExpensesComponent implements OnInit {
 
   resultado:any;
 
+  despesas:any;
+
+  sideinformation: any ;
+  respostaGrupo: any ;
+
   constructor(private pedir : MainService, router : Router) { this.router = router}
 
 
@@ -39,12 +44,39 @@ export class ExpensesComponent implements OnInit {
     })
   }
 
+  verDespesas(){
+    console.log('ver despesa');
+    this.pedir.seeDespesav1().subscribe(arg =>{
+      this.despesas = arg;
+      console.log('heello');
+      console.log(arg);
+      console.log(this.despesas);
+      console.log(this.despesas[0].quanti);
+    })
+  }
+
+  verGrupos(){
+    console.log('ver grupos');
+    this.pedir.seeGrupos().subscribe(arg =>{
+      this.respostaGrupo = arg;
+      this.sideinformation = this.respostaGrupo;
+      console.log(this.respostaGrupo);
+    })
+  }
+
+  addGrupoDespesa(id: number){
+    console.log("Id do grupo: ",id);
+    this.grupo_id = id;
+  }
+
   teste(){
     /*
     this.overlay.style.display = 'block';
         this.popup.style.display = 'block';*/
         this.popup.className = 'show';
   }
+
+
 
   closePopup()
   {
