@@ -13,5 +13,15 @@
 <div class="direita">
   <button [ngStyle]="{display: eliminar}" (click)="eliminarGrupo()">Eliminar</button>
   <button (click)="sairGrupo()">Sair</button>
+  <button (click)="adicionarMembros()">Adicionar Membros</button>
+  <button [ngStyle]="{display: eliminar}" (click)="removerMembros()">Remover Membros</button>
+
+  <div [ngStyle]="{display: usersStyle}">
+    <div class="grupo" *ngFor="let x of users">
+      <h1>{{x.name}}</h1>
+      <input type="checkbox">
+    </div>
+  </div>
+
 </div>
 

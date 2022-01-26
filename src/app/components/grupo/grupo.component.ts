@@ -14,6 +14,10 @@ export class GrupoComponent implements OnInit {
   dadosGrupo: any;
   despesas: any;
   eliminar: string = "none";
+  usersStyle: string = "none";
+  dadosAmigos: any;
+  user: any;
+  users: any;
 
   constructor(private pedir: MainService ,router: Router) { this.router = router }
 
@@ -79,6 +83,53 @@ export class GrupoComponent implements OnInit {
         localStorage.removeItem('idGrupo');
         this.router.navigate(['/home'])
       })
+  }
+
+  adicionarMembros() {
+    if(this.usersStyle == 'none') {
+      this.usersStyle = 'block';
     }
+
+    this.pedir.seeAmigos().subscribe(arg => {
+
+      this.dadosAmigos = arg;
+    console.log('Adicionar membros');
+
+    this.verUtilizador();
+  }
+    )}
+
+  removerMembros() {
+    if(this.usersStyle == 'none') {
+      this.usersStyle = 'block';
+    }
+    console.log('Remover membros')
+  }
+
+  verUtilizador() {
+    for(let i = 0; this.dadosAmigos.length > 0; i++) {
+      if(this.dadosAmigos[i].user_id1 == this.pedir.userId) {
+
+        this.pedir.verUser(this.dadosAmigos[i].user_id2).subscribe(argU => {
+          if(this.users == undefined) {
+            this.users = argU
+          } else {
+            this.user = argU;
+            this.users = [...this.users, ...this.user]
+          }
+        })
+      } else {
+        this.pedir.verUser(this.dadosAmigos[i].user_id1).subscribe(argU => {
+          if(this.users == undefined) {
+            this.users = argU
+          } else {
+            this.user = argU;
+            this.users = [...this.users, ...this.user]
+          }
+        })
+      }
+    }
+    console.log('----' + this.users)
+  }
 
 }

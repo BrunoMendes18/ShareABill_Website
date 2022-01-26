@@ -194,5 +194,18 @@ export class MainService {
 
     return this.http.delete(link, httpOptions);
   }
+
+  verUser(iD: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkAmigos + '1/' + this.userId + '/' + iD;
+
+    return this.http.get(link, httpOptions);
+  }
 }
 
