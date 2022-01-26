@@ -2,7 +2,7 @@
     position: absolute; 
     width: 50px;
     height: 50px;
-    margin-top: -4.5vh;
+    margin-top: -23.5vh;
     margin-left: 150vh;
     background-color: Transparent;
     border: none;
@@ -13,7 +13,7 @@
     position: absolute; 
     width: 50px;
     height: 50px;
-    margin-top: -13.5vh;
+    margin-top: -32.5vh;
     margin-left: 150vh;
     background-color: Transparent;
     border: none;
@@ -24,7 +24,7 @@
     position: absolute; 
     width: 50px;
     height: 50px;
-    margin-top: -22.5vh;
+    margin-top: -41.5vh;
     margin-left: 150vh;
     background-color: Transparent;
     border: none;
@@ -46,16 +46,16 @@
     position: absolute; 
     width: 50px;
     height: 50px;
-    margin-top: -9vh;
-    margin-left: 65vh;
+    margin-top: -8vh;
+    margin-left: 5vh;
 }
 
 #close{
     position: absolute; 
     width: 40px;
     height: 40px;
-    margin-top: -5.5vh;
-    margin-left: 67.5vh;
+    margin-top: -5vh;
+    margin-left: 5vh;
 }
 
 #input{
@@ -78,12 +78,12 @@
 
 #texto1{
     position: relative;
-    margin-top: -12.5vh;
-    margin-left: 75vh;
+    margin-top: 1.5vh;
+    margin-left: 15vh;
 }
 
 #email1{
     position: relative;
-    margin-top: 0vh;
-    margin-left: 75vh;
+    margin-top: 1.5vh;
+    margin-left: 15vh;
 }

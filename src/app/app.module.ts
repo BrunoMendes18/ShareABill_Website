@@ -12,6 +12,7 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { FormComponent } from './components/friends/form/form.component';
+import { GrupoComponent } from './components/grupo/grupo.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormComponent } from './components/friends/form/form.component';
     ExpensesComponent,
     HomePageComponent,
     FormComponent,
+    GrupoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,27 @@
 <div class="espacamento"></div>
 
-<p>grupo works!</p>
+<div class="esquerda">
+  <h1>{{dadosGrupo[0].nome}}</h1>
+  <h3>{{dadosGrupo[0].desc}}</h3>
+
+  <div class="grupo" *ngFor="let x of despesas" (click)="verDespesa(x.id)">
+    <h2>{{x.nome}}</h2>
+    <h3>{{x.quanti}} €</h3>
+  </div>
+</div>
+
+<div class="direita">
+  <button [ngStyle]="{display: eliminar}" (click)="eliminarGrupo()">Eliminar</button>
+  <button (click)="sairGrupo()">Sair</button>
+  <button (click)="adicionarMembros()">Adicionar Membros</button>
+  <button [ngStyle]="{display: eliminar}" (click)="removerMembros()">Remover Membros</button>
+
+  <div [ngStyle]="{display: usersStyle}">
+    <div class="grupo" *ngFor="let x of users">
+      <h1>{{x.name}}</h1>
+      <input type="checkbox">
+    </div>
+  </div>
+
+</div>
+

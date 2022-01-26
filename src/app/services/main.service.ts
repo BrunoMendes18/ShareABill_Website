@@ -14,10 +14,13 @@ export class MainService {
   linkDespesas = "api/v1/despesas/"
   linkAmigos = "api/v1/amigos/";
   linkUsers = "api/v1/users/";
+  linkMembrosGrupo = "api/v1/membroGrupo/";
 
   userToken : string | null ="";
   userId: any;
-  user_id1: any;
+  userId2: any;
+  grupoId: any;
+
 
   doLogIn(email: string, password: string){
     return this.http.post(this.linkLogin, ({email: email, password: password}));
@@ -52,7 +55,7 @@ export class MainService {
       })
     };
 
-    const link = this.linkGrupos + '/' + this.userId;
+    const link = this.linkGrupos + this.userId;
 
     return this.http.post(link, ({ nome: nome, desc: desc, data: new Date(), admin: this.userId }), httpOptions);
   }
@@ -65,6 +68,30 @@ export class MainService {
     };
 
     return this.http.get(this.linkAmigos + '/' + this.userId , httpOptions);
+  }
+
+  deleteAmigo(id:number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    return this.http.delete(this.linkAmigos +id , httpOptions);
+  }
+
+  AddAmigo(id1:number,id2:number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkAmigos + '1/' + this.userId + '/' + this.userId2;
+
+    return this.http.post(link, ({ id1:this.userId,id2:this.userId2 }), httpOptions);
   }
 
   seeUsers(){
@@ -87,7 +114,20 @@ export class MainService {
       })
     };
 
-    const link = this.linkGrupos + '/3/' + this.userId + '/' + valor;
+    const link = this.linkGrupos + '3/' + this.userId + '/' + valor;
+
+    return this.http.get(link, httpOptions);
+  }
+
+  pesquisarUser(valor: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkUsers + valor;
 
     return this.http.get(link, httpOptions);
   }
@@ -121,6 +161,69 @@ export class MainService {
     };
 
     return this.http.post(this.linkDespesas,({nome: name,quanti:quantidade,tipo:tipoo,grupo_id:grupoid,pago:qpago}),httpOptions);
+  }
+
+  verGrupo () {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    const link = this.linkGrupos + '2/' + this.grupoId;
+
+    return this.http.get(link, httpOptions);
+  }
+
+  verDespesasGrupo() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    const link = this.linkDespesas + '2/' + this.grupoId;
+
+    return this.http.get(link, httpOptions);
+  }
+
+  eliminarGrupo() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkGrupos + this.grupoId + '/' + this.userId;
+
+    return this.http.delete(link, httpOptions);
+  }
+
+  sairGrupo() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkMembrosGrupo + this.grupoId + '/' + this.userId;
+
+    return this.http.delete(link, httpOptions);
+  }
+
+  verUser(iD: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkAmigos + '1/' + this.userId + '/' + iD;
+
+    return this.http.get(link, httpOptions);
   }
 }
 

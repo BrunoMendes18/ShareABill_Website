@@ -1,16 +1,19 @@
-<input id="input" type="text" name=""/> 
+<input id="input" type="text" name=""  (input)='pesquisa(pesquisar.value)' #pesquisar/> 
 
-<img id="lupa" src="assets/lupa.png">
+<div id="divAmigo1" *ngFor="let u of resultado">
+    <h2 id="name">{{u.name}}</h2>
+    <p id="email">{{u.email}}</p>
 
-<div id="divAmigo1"></div>
-
-<h2 id="texto1">Nome</h2>
-
-<p id="email1">Email1</p>
-
-<button id="botao" type="button" > <img id="plus" src="assets/plus.png"/></button>
+   
+    <img id="plus" src="assets/plus.png"/>
+    <button id="botao" type="button" (click)="AdicionarAmigo()"></button>
 
 <img id="user" src="assets/user.png">
+</div>
+
+
+
+
 
 
 

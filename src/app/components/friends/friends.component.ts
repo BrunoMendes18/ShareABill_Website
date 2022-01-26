@@ -11,6 +11,8 @@ export class FriendsComponent implements OnInit {
 
   router: Router;
   resultado:any;
+  resultado1:any;
+  i:any;
 
   constructor(private pedir : MainService ,router: Router) { this.router = router }
 
@@ -37,15 +39,33 @@ export class FriendsComponent implements OnInit {
     this.pedir.seeAmigos()
     .subscribe(data => {
       this.resultado=data;
+      console.log('OI - ')
       console.log(this.resultado)
+      this.verUsers()
+
+
     });
   }
 
- 
-
-  verAmigo(id: any) {
-    localStorage.setItem('idAmigo', id);
+  verUsers() {
+    this.pedir.seeUsers()
+    .subscribe(data => {
+      this.resultado1=data;
+      console.log(this.resultado1)
+    });
   }
+
+  apagarAmigo(id:number) {
+    if(confirm('Tens que a certeza que queres remover este amigo?')){
+      this.pedir.deleteAmigo(id).subscribe(res=>{
+        this.verAmigos();
+        console.log(id)
+      })
+    }
+  }
+
+  
+
 
   
 
