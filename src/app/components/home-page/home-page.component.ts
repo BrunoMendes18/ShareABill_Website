@@ -49,6 +49,8 @@ export class HomePageComponent implements OnInit {
       } else {
         this.display = "none";
       }
+    } else if (id == 0) {
+      this.router.navigate(['/outrascontas']);
     } else {
       localStorage.setItem('idGrupo', id);
       this.router.navigate(['/grupo']);
