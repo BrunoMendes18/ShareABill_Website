@@ -11,6 +11,7 @@
 </div>
 
 <div class="direita">
-  <button (click)="sairEliminarGrupo()">{{sairEliminar}}</button>
+  <button [ngStyle]="{display: eliminar}" (click)="eliminarGrupo()">Eliminar</button>
+  <button (click)="sairGrupo()">Sair</button>
 </div>
 

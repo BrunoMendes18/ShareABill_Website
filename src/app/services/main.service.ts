@@ -14,6 +14,7 @@ export class MainService {
   linkDespesas = "api/v1/despesas/"
   linkAmigos = "api/v1/amigos/";
   linkUsers = "api/v1/users/";
+  linkMembrosGrupo = "api/v1/membroGrupo/";
 
   userToken : string | null ="";
   userId: any;
@@ -140,7 +141,7 @@ export class MainService {
     return this.http.get(link, httpOptions);
   }
 
-  sairEliminarGrupo() {
+  eliminarGrupo() {
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': 'Bearer ' + this.userToken,
@@ -149,6 +150,19 @@ export class MainService {
     };
 
     const link = this.linkGrupos + this.grupoId + '/' + this.userId;
+
+    return this.http.delete(link, httpOptions);
+  }
+
+  sairGrupo() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkMembrosGrupo + this.grupoId + '/' + this.userId;
 
     return this.http.delete(link, httpOptions);
   }
