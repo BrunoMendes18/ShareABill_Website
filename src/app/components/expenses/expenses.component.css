@@ -1,4 +1,5 @@
 .wrapper{
+  position:relative;
   width: 100%;
 	min-width: 300px;
 	margin-left: auto;
@@ -11,7 +12,11 @@
 
 .conteiner{
  /* background-color: red;*/
-  margin-top: 50px;
+ background-color: #ecf0f1;
+  position:absolute;
+  top:8%;
+  left:8%;
+  right:8%;
   padding-right: 15px;
     padding-left: 15px;
     margin-right: 8%;
@@ -37,12 +42,12 @@
   width:200px;
   background-color: tomato;
   float:left;
-  margin-left: 8%;
-  margin-top: -16%;
+
+  margin-top: 16%;
   position:sticky;
 }
 
-#icon-desp{
+.icon-desp{
   top:10%;
   left:25%;
   width: 100px;
@@ -53,6 +58,43 @@
   position:absolute;
   bottom:10%;
   left:20%;
+}
+
+#verDespesa{
+  position:absolute;
+  bottom:20%;
+  left:20%;
+}
+.box-side{
+  height:90vh;
+  width:200px;
+  background-color: tomato;
+
+
+  position:fixed;
+  top:50px;
+  right:0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.side-box{
+  border-radius: 12.5px;
+  margin-top: 5px;
+  background-color: grey;
+  width:200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.btnadd{
+  margin-bottom: 10px;
 }
 
 .box-expense{
@@ -71,6 +113,7 @@ img{
 }
 
 .content{
+  position:relative;
   margin-left: 10%;
   position:absolute;
   width:80%;
@@ -78,6 +121,22 @@ img{
   background-color: white;
 }
 
+.titulo-despesa{
+  position:absolute;
+  margin-top:0;
+  left:35%;
+  top:5%;
+  color:red;
+}
+
+.despesa-content{
+  position:absolute;
+  width:100%;
+  bottom: 0;
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
 
 

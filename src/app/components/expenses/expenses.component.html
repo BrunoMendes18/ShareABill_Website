@@ -1,34 +1,65 @@
 <div class="wrapper">
 
-  <div class="conteiner">
+  <div class="conteiner" >
 
-    <div class="box-expense">
-
-      <img src="https://www.freeiconspng.com/thumbs/dollar-icon-png/money-flat-money-png-15.png">
-      <div class="content">
+    <div *ngFor="let x of despesas">
 
 
+      <div class="box-expense" >
+
+        <img src="https://www.freeiconspng.com/thumbs/dollar-icon-png/money-flat-money-png-15.png">
+        <div class="content">
+
+            <h1 class="titulo-despesa">{{x.nome}}</h1>
+            <div class="despesa-content">
+              <h6>Id Despesa: {{x.id}}</h6>
+              <h6>Id Pessoa que Pagou: {{x.pago}}</h6>
+              <h6>Id Do Grupo: {{x.grupo_id}}</h6>
+              <h6>Tipo Despesa: {{x.tipo}}</h6>
+
+            </div>
+        </div>
       </div>
+
+      <div class="breaker"></div>
+
+
     </div>
 
-    <div class="breaker"></div>
-
-    <div class="box-expense">
-
-      <img src="https://www.freeiconspng.com/thumbs/dollar-icon-png/money-flat-money-png-15.png">
-      <div class="content">
 
 
-      </div>
-
-    </div>
 
 
 
   </div>
+
+
+
+
+
+
+
+
   <div class="box-add">
-    <img id="icon-desp" src="../../../assets/despesas-icon.png">
+    <img class="icon-desp" src="../../../assets/despesas-icon.png">
     <button id="adicionarDespesa" (click)="teste()" >Adicionar Despesa</button>
+    <button id="verDespesa" (click)="verDespesas()" >Ver Despesas</button>
+    <button id="verGrupos" (click)="verGrupos()" >Ver Grupos</button>
+  </div>
+
+  <div class="box-side">
+
+    <div *ngFor="let x of respostaGrupo">
+
+      <div class="side-box" >
+        <h2>{{x.nome}}</h2>
+        <h3>{{x.desc}}</h3>
+        <button class="btnadd" (click)="addGrupoDespesa(x.id)">Add me miau</button>
+      </div>
+
+    </div>
+
+
   </div>
 
 

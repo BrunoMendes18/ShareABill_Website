@@ -132,6 +132,24 @@ export class MainService {
     return this.http.get(link, httpOptions);
   }
 
+  seeDespesav1(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    console.log('userId: ',this.userId);
+    const link = this.linkDespesas + '/view/' + this.userId ;
+
+    console.log('EndPoint - '+ link);
+
+    const teste = this.http.get(link, httpOptions);
+    console.log('Teste - ' + teste);
+    return teste;
+  }
+
   insertDespesav1(name:string ,quantidade: number, tipoo: number,grupoid: number|null , qpago:number)
   {
     console.log('Existe: ',this.userToken);
