@@ -11,6 +11,9 @@ export class FormComponent implements OnInit {
 
   router: Router;
   resultado:any;
+  id:any;
+  id1:any;
+  id2:any;
 
   constructor(private pedir : MainService ,router: Router) { this.router = router }
 
@@ -32,6 +35,25 @@ export class FormComponent implements OnInit {
       this.resultado=data;
       console.log(this.resultado)
     });
+  }
+
+  pesquisa(teste: any) {
+    if (teste.length >= 3) {
+      this.pedir.pesquisarUser(teste).subscribe(arg => {
+        this.resultado = arg;
+      });
+    } else {
+      this.verUsers();
+    }
+  }
+
+  AdicionarAmigo() {
+    this.pedir.AddAmigo(this.id1, this.id2)
+    .subscribe(arg => {
+      this.resultado=arg;
+      console.log(this.resultado)
+    });
+
   }
 
 }
