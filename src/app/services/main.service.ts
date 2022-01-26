@@ -67,6 +67,17 @@ export class MainService {
     return this.http.get(this.linkAmigos + '/' + this.userId , httpOptions);
   }
 
+  deleteAmigo(id:number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    return this.http.delete(this.linkAmigos + '/' + id , httpOptions);
+  }
+
   seeUsers(){
     const httpOptions = {
       headers: new HttpHeaders({

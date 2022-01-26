@@ -1,15 +1,21 @@
 <input id="input" type="text" name=""/> 
-<div id="divAmigo1"></div>
 
-<h2 id="texto1">Amugos1</h2>
 
-<p id="email1">Email1</p>
+<div id="divAmigo1" *ngFor="let u of resultado">
+    <h2 id="texto1">{{u.user_id2}}</h2>
 
-<button id="botao3" type="button" > <img id="close" src="assets/close.png"/></button>
+    <p id="email1">{{u.user_id2}}</p>
+    <img id="user" src="assets/user.png">
+    <button id="botao3" type="button" (click)="apagarAmigo(u.user_id2)"> <img id="close" src="assets/close.png"/></button>
+</div>
 
-<button id="botao2" type="button" > <img id="filter" src="assets/lupa.png" height ="40" width="40" /></button>
+
+
+
+
+<button id="botao2" type="button" > <img id="lupa" src="assets/lupa.png" height ="40" width="40" /></button>
 <button id="botao1" type="button" > <img id="filter" src="assets/filter.png" height ="40" width="40" /></button>
 
-<img id="user" src="assets/user.png">
+
 <button id="botao" type="button" [routerLink]="['/form']"> <img src="assets/add-user.png" height ="40" width="40" /></button>
 

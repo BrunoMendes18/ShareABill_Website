@@ -2,17 +2,17 @@
     position: relative;
     width: 50px;
     height: 50px;
-    margin-top: -20vh;
-    margin-left: 150vh;
+    margin-top: -10vh;
+    margin-left: 160vh;
 }
 
 #botao{
     position: absolute; 
     width: 50px;
     height: 50px;
-    margin-top: -5.5vh;
-    margin-left: 67.5vh;
-    background-color: Transparent;
+    margin-top: -7.5vh;
+    margin-left: 74.5vh;
+    background-color: transparent;
     border: none;
     outline:none;
 }
@@ -21,16 +21,16 @@
     position: absolute; 
     width: 40px;
     height: 40px;
-    margin-top: -5.5vh;
-    margin-left: 67.5vh;
+    margin-top: -7vh;
+    margin-left: 75vh;
 }
 
 #user{
     position: absolute; 
     width: 50px;
     height: 50px;
-    margin-top: -9vh;
-    margin-left: 65vh;
+    margin-top: -8vh;
+    margin-left: 5vh;
 }
 
 #input{
@@ -51,14 +51,18 @@
   margin-left: 60vh;
 }
 
-#texto1{
+#name{
     position: relative;
-    margin-top: -12.5vh;
-    margin-left: 75vh;
+    margin-top: 1.5vh;
+    margin-left: 15vh;
+
 }
 
-#email1{
+#email{
     position: relative;
-    margin-top: 0vh;
-    margin-left: 75vh;
+    margin-top: 1.5vh;
+    margin-left: 15vh;
+
 }
+
+
