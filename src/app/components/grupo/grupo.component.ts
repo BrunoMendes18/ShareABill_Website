@@ -20,6 +20,12 @@ export class GrupoComponent implements OnInit {
   user: any;
   users: any;
   dadosUsers: any;
+  fromStyle: string = "none";
+  addValor: any = 0;
+  remValor: any = 0;
+
+  nome: any;
+  desc: any;
 
   constructor(private pedir: MainService ,router: Router) { this.router = router }
 
@@ -47,6 +53,8 @@ export class GrupoComponent implements OnInit {
 
     this.pedir.verGrupo().subscribe(arg => {
       this.dadosGrupo = arg;
+      this.nome = this.dadosGrupo[0].nome;
+      this.desc = this.dadosGrupo[0].desc;
       console.log(this.dadosGrupo[0].admin);
       console.log(this.pedir.userId)
 
@@ -58,7 +66,7 @@ export class GrupoComponent implements OnInit {
     });
 
     this.verDespesasOutros();
-    this.adicionarMembros();
+    this.adicionarMembros(0);
   }
 
   verDespesasOutros() {
@@ -88,11 +96,12 @@ export class GrupoComponent implements OnInit {
       })
   }
 
-  adicionarMembros() {
-    if(this.usersStyleA == 'none') {
+  adicionarMembros(t: any) {
+    if(t == 0) {
+      this.addValor = 1;
+      this.remValor = 0;
       this.usersStyleR = 'none';
       this.usersStyleA = 'block';
-    }
 
     this.pedir.seeAmigos().subscribe(arg => {
       this.dadosAmigos = arg;
@@ -104,22 +113,29 @@ export class GrupoComponent implements OnInit {
       this.dadosUsers = arg
     })
 
-  this.verUtilizador(+1);
+    this.verUtilizador(+1);
+    } else {
+      this.usersStyleA = 'none';
+      this.addValor = 0;
+    }
   }
 
-  removerMembros() {
-    if(this.usersStyleR == 'none') {
+  removerMembros(t: any) {
+    if(t == 0) {
+      this.remValor = 1;
+      this.addValor = 0;
       this.usersStyleA = 'none';
       this.usersStyleR = 'block';
+
+      this.pedir.verMembrosGrupo().subscribe(arg => {
+        console.log(arg);
+        this.dadosUsers = arg
+        this.verUtilizador(-1);
+      })
+    } else {
+      this.usersStyleR = 'none';
+      this.remValor = 0;
     }
-
-    this.pedir.verMembrosGrupo().subscribe(arg => {
-      console.log(arg);
-      this.dadosUsers = arg
-      this.verUtilizador(-1);
-    })
-
-    console.log('Remover membros')
   }
 
   verUtilizador(t: any) {
@@ -195,7 +211,7 @@ export class GrupoComponent implements OnInit {
       console.log('Adicionado?')
       console.log(arg)
     });
-    this.adicionarMembros();
+    this.adicionarMembros(0);
   }
 
   removerMembro(iD: any) {
@@ -203,7 +219,23 @@ export class GrupoComponent implements OnInit {
       console.log('Removido?')
       console.log(arg)
     });
-    this.removerMembros();
+    this.removerMembros(0);
   }
 
+  atualizarGrupo(tipo: any) {
+    console.log(tipo)
+    console.log(this.nome)
+    console.log(this.desc)
+    if(tipo == 0) {
+      if(this.fromStyle == 'none') {
+        this.fromStyle = 'block';
+      } else this.fromStyle = 'none';
+    } else {
+      this.pedir.atualizarGrupo(this.nome, this.desc).subscribe(arg => {
+        console.log(arg);
+        this.ngOnInit();
+        this.atualizarGrupo(0);
+      })
+    }
+  }
 }

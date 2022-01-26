@@ -12,9 +12,10 @@
 
 <div class="direita">
   <button [ngStyle]="{display: eliminar}" (click)="eliminarGrupo()">Eliminar</button>
+  <button [ngStyle]="{display: eliminar}" (click)="atualizarGrupo(0)">Atualizar</button>
   <button (click)="sairGrupo()">Sair</button>
-  <button (click)="adicionarMembros()">Adicionar Membros</button>
-  <button [ngStyle]="{display: eliminar}" (click)="removerMembros()">Remover Membros</button>
+  <button (click)="adicionarMembros(addValor)">Adicionar Membros</button>
+  <button [ngStyle]="{display: eliminar}" (click)="removerMembros(remValor)">Remover Membros</button>
 
   <div [ngStyle]="{display: usersStyleR}">
     <div class="grupo" *ngFor="let x of users">
@@ -31,6 +32,12 @@
       <button (click)="adicionarMembro(x.id)">Adicionar</button>
     </div>
   </div>
+
+  <div [ngStyle]="{display: fromStyle}">
+    <input type='text' [(ngModel)]="nome">
+    <input type='text' [(ngModel)]="desc">
+    <button (click)="atualizarGrupo(1)">Registar</button>
+</div>
 
 </div>
 

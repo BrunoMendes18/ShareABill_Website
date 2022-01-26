@@ -251,5 +251,18 @@ export class MainService {
 
     return this.http.post(link, ({ user_id: iD, grupo_id: this.grupoId }),httpOptions);
   }
+
+  atualizarGrupo(nNome: any, nDesc: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkGrupos + this.grupoId;
+
+    return this.http.put(link, ({ nome: nNome, desc: nDesc }),httpOptions);
+  }
 }
 
