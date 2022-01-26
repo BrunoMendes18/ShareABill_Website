@@ -16,10 +16,19 @@
   <button (click)="adicionarMembros()">Adicionar Membros</button>
   <button [ngStyle]="{display: eliminar}" (click)="removerMembros()">Remover Membros</button>
 
-  <div [ngStyle]="{display: usersStyle}">
+  <div [ngStyle]="{display: usersStyleR}">
     <div class="grupo" *ngFor="let x of users">
-      <h1>{{x.name}}</h1>
-      <input type="checkbox">
+      <h3>{{x.name}}</h3>
+      <p>{{x.id}}</p>
+      <button (click)="removerMembro(x.id)">Remover</button>
+    </div>
+  </div>
+
+  <div [ngStyle]="{display: usersStyleA}">
+    <div class="grupo" *ngFor="let x of users">
+      <h3>{{x.name}}</h3>
+      <p>{{x.id}}</p>
+      <button (click)="adicionarMembro(x.id)">Adicionar</button>
     </div>
   </div>
 

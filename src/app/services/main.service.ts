@@ -182,7 +182,7 @@ export class MainService {
     return this.http.delete(link, httpOptions);
   }
 
-  sairGrupo() {
+  sairGrupo(iDuser: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'authorization': 'Bearer ' + this.userToken,
@@ -190,7 +190,7 @@ export class MainService {
       })
     };
 
-    const link = this.linkMembrosGrupo + this.grupoId + '/' + this.userId;
+    const link = this.linkMembrosGrupo + this.grupoId + '/' + iDuser;
 
     return this.http.delete(link, httpOptions);
   }
@@ -206,6 +206,32 @@ export class MainService {
     const link = this.linkAmigos + '1/' + this.userId + '/' + iD;
 
     return this.http.get(link, httpOptions);
+  }
+
+  verMembrosGrupo() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkMembrosGrupo + this.grupoId;
+
+    return this.http.get(link, httpOptions);
+  }
+
+  adicionarMGrupo(iD: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkMembrosGrupo;
+
+    return this.http.post(link, ({ user_id: iD, grupo_id: this.grupoId }),httpOptions);
   }
 }
 

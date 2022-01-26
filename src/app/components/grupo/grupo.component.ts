@@ -14,10 +14,12 @@ export class GrupoComponent implements OnInit {
   dadosGrupo: any;
   despesas: any;
   eliminar: string = "none";
-  usersStyle: string = "none";
+  usersStyleA: string = "none";
+  usersStyleR: string = "none";
   dadosAmigos: any;
   user: any;
   users: any;
+  dadosUsers: any;
 
   constructor(private pedir: MainService ,router: Router) { this.router = router }
 
@@ -56,6 +58,7 @@ export class GrupoComponent implements OnInit {
     });
 
     this.verDespesasOutros();
+    this.adicionarMembros();
   }
 
   verDespesasOutros() {
@@ -78,7 +81,7 @@ export class GrupoComponent implements OnInit {
   }
 
   sairGrupo() {
-      this.pedir.sairGrupo().subscribe(arg => {
+      this.pedir.sairGrupo(this.pedir.userId).subscribe(arg => {
         console.log(arg);
         localStorage.removeItem('idGrupo');
         this.router.navigate(['/home'])
@@ -86,50 +89,121 @@ export class GrupoComponent implements OnInit {
   }
 
   adicionarMembros() {
-    if(this.usersStyle == 'none') {
-      this.usersStyle = 'block';
+    if(this.usersStyleA == 'none') {
+      this.usersStyleR = 'none';
+      this.usersStyleA = 'block';
     }
 
     this.pedir.seeAmigos().subscribe(arg => {
-
       this.dadosAmigos = arg;
-    console.log('Adicionar membros');
+      console.log('Adicionar membros');
+    })
 
-    this.verUtilizador();
+    this.pedir.verMembrosGrupo().subscribe(arg => {
+      console.log(arg);
+      this.dadosUsers = arg
+    })
+
+  this.verUtilizador(+1);
   }
-    )}
 
   removerMembros() {
-    if(this.usersStyle == 'none') {
-      this.usersStyle = 'block';
+    if(this.usersStyleR == 'none') {
+      this.usersStyleA = 'none';
+      this.usersStyleR = 'block';
     }
+
+    this.pedir.verMembrosGrupo().subscribe(arg => {
+      console.log(arg);
+      this.dadosUsers = arg
+      this.verUtilizador(-1);
+    })
+
     console.log('Remover membros')
   }
 
-  verUtilizador() {
-    for(let i = 0; this.dadosAmigos.length > 0; i++) {
-      if(this.dadosAmigos[i].user_id1 == this.pedir.userId) {
+  verUtilizador(t: any) {
+      this.users = undefined;
 
-        this.pedir.verUser(this.dadosAmigos[i].user_id2).subscribe(argU => {
-          if(this.users == undefined) {
-            this.users = argU
+    if(t == +1) {
+
+      console.log('this.dadosUsers.length')
+      console.log(this.dadosUsers.length)
+
+      const x =this.dadosUsers.length;
+
+      for(let i = 0; this.dadosAmigos.length > 0; i++) {
+
+        let j = 0;
+        let pertence = 'Falso';
+
+          if(this.dadosAmigos[i].user_id1 == this.pedir.userId) {
+
+            while (j < x) {
+
+              if (this.dadosAmigos[i].user_id2 == this.dadosUsers[j].user_id) {
+                pertence = 'Verdadeiro';
+              }
+
+              j++;
+            }
+
+            if(pertence == 'Falso') {
+
+              this.pedir.verUser(this.dadosAmigos[i].user_id2).subscribe(argU => {
+                if(this.users == undefined) {
+                  this.users = argU
+                } else {
+                  this.user = argU;
+                  this.users = [...this.users, ...this.user]
+                }
+              })
+
+            }
+
           } else {
-            this.user = argU;
-            this.users = [...this.users, ...this.user]
+            this.pedir.verUser(this.dadosAmigos[i].user_id1).subscribe(argU => {
+              if(this.users == undefined) {
+                this.users = argU
+              } else {
+                this.user = argU;
+                this.users = [...this.users, ...this.user]
+              }
+            })
           }
-        })
-      } else {
-        this.pedir.verUser(this.dadosAmigos[i].user_id1).subscribe(argU => {
-          if(this.users == undefined) {
-            this.users = argU
-          } else {
-            this.user = argU;
-            this.users = [...this.users, ...this.user]
-          }
-        })
+      }
+    } else {
+      for(let i = 0; this.dadosUsers.length > 0; i++) {
+        if (this.dadosUsers[i].user_id != this.pedir.userId) {
+          this.pedir.verUser(this.dadosUsers[i].user_id).subscribe(argU => {
+            if(this.users == undefined) {
+              this.users = argU
+            } else {
+              this.user = argU;
+              this.users = [...this.users, ...this.user]
+            }
+          })
+        }
       }
     }
-    console.log('----' + this.users)
+
+    console.log(this.users)
+  }
+
+  adicionarMembro(iD: any) {
+    this.pedir.adicionarMGrupo(iD).subscribe(arg => {
+      console.log('Adicionado?')
+      console.log(arg)
+    });
+    this.adicionarMembros();
+  }
+
+  removerMembro(iD: any) {
+    this.pedir.sairGrupo(iD).subscribe(arg => {
+      console.log('Removido?')
+      console.log(arg)
+    });
+    this.removerMembros();
   }
 
 }
