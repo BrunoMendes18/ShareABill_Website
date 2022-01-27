@@ -9,6 +9,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { FormComponent } from './components/friends/form/form.component';
 import { HandleResponseCodesComponent } from './components/handle-response-codes/handle-response-codes.component';
+import { OutrascontasComponent } from './components/outrascontas/outrascontas.component';
 
 const routes: Routes = [
   {path: "", component : HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: "expenses",component: ExpensesComponent},
   {path: "form",component: FormComponent},
   {path: "code",component: HandleResponseCodesComponent},
+  {path: "outrascontas", component: OutrascontasComponent},
 ];
 
 @NgModule({

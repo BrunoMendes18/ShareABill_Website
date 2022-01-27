@@ -16,6 +16,7 @@ export class MainService {
   linkAmigos = "api/v1/amigos/";
   linkUsers = "api/v1/users/";
   linkMembrosGrupo = "api/v1/membroGrupo/";
+  linkMembrosDespesa = "api/v1/membroDespesa/"
 
   userToken : string | null ="";
   userId: any;
@@ -291,5 +292,31 @@ export class MainService {
 
     return this.http.put(link, ({ nome: nNome, desc: nDesc }),httpOptions);
   }
-}
 
+  verMembrosDesp(iD:any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkMembrosDespesa + iD;
+
+    return this.http.get(link, httpOptions);
+  }
+
+  liquidarConta(idDesp :any, quantia: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkMembrosDespesa + this.userId + '/' + idDesp;
+
+    return this.http.put(link, ({ deve: quantia }),httpOptions);
+  }
+
+}

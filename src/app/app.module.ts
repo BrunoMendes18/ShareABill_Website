@@ -14,6 +14,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { FormComponent } from './components/friends/form/form.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { HandleResponseCodesComponent } from './components/handle-response-codes/handle-response-codes.component';
+import { OutrascontasComponent } from './components/outrascontas/outrascontas.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HandleResponseCodesComponent } from './components/handle-response-codes
     FormComponent,
     GrupoComponent,
     HandleResponseCodesComponent,
+    OutrascontasComponent,
   ],
   imports: [
     BrowserModule,

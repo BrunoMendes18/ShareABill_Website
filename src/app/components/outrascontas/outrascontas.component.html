@@ -1,0 +1,12 @@
+<div class="espacamento"></div>
+
+<div class="esquerda">
+  <h1>Contas não associadas</h1>
+  <h3>Contas entre amigos que não tem grupo associado</h3>
+
+  <div class="grupo" *ngFor="let x of despesas">
+    <h2>{{x.nome}}</h2>
+    <h3>{{x.quanti}} €</h3>
+  </div>
+</div>
+

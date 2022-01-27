@@ -4,9 +4,10 @@
   <h1>{{dadosGrupo[0].nome}}</h1>
   <h3>{{dadosGrupo[0].desc}}</h3>
 
-  <div class="grupo" *ngFor="let x of despesas" (click)="verDespesa(x.id)">
+  <div class="grupo" *ngFor="let x of despesas">
     <h2>{{x.nome}}</h2>
     <h3>{{x.quanti}} €</h3>
+    <a (click)="liquidar(x.estado, x.id, x.deve)"><p>{{x.estado}} - {{x.deve}}€</p></a>
   </div>
 </div>
 
@@ -38,6 +39,11 @@
     <input type='text' [(ngModel)]="desc">
     <button (click)="atualizarGrupo(1)">Registar</button>
 </div>
+<div [ngStyle]="{display: deveStyle}">
+  <input type="number" placeholder="Ficou a deve quanto?" #deves>
+  <button (click)="liquidar('confirmar', despesaId, deves.value)">Confirmar</button>
+</div>
+
 
 </div>
 
