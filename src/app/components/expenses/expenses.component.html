@@ -4,7 +4,7 @@
 
     <div *ngFor="let x of despesas">
 
-
+      <div class="breaker"></div>
       <div class="box-expense" >
 
         <img src="https://www.freeiconspng.com/thumbs/dollar-icon-png/money-flat-money-png-15.png">
@@ -58,7 +58,7 @@
       <div class="side-box" >
         <h2>{{x.nome}}</h2>
         <h3>{{x.desc}}</h3>
-        <button class="btnadd" (click)="addGrupoDespesa(x.id)">Add me miau</button>
+        <button class="btnadd" (click)="addGrupoDespesa(x.id)">Adiconar á despesa</button>
       </div>
 
     </div>
@@ -68,7 +68,7 @@
       <div class="side-box am" >
         <h2>{{x.name}}</h2>
         <h3>{{x.email}}</h3>
-        <button class="btnadd" (click)="addAmigoDespesa(x.id,x.name)">Add me nya</button>
+        <button class="btnadd" (click)="addAmigoDespesa(x.id,x.name)">Adiconar á despesa</button>
       </div>
 
     </div>
@@ -88,7 +88,7 @@
     <label>Nome da despesa</label>
   </div>
   <div class="input-container">
-    <input type="password" required="" name="password" [(ngModel)]="quanti" />
+    <input type="text" required="" name="password" [(ngModel)]="quanti" />
     <label>Valor €</label>
   </div>
   <div class="input-container">
@@ -96,11 +96,11 @@
     <label>Como dividir a despesa</label>
   </div>
   <div class="input-container">
-    <input type="text" readonly required="" name="grupo_id" [(ngModel)]="grupo_id" />
+    <input type="text"  required="" name="grupo_id" [(ngModel)]="grupo_id" />
     <label>Grupo(opcional)</label>
   </div>
   <div class="input-container">
-    <input type="text" readonly required="" name="nomesDespesas" [(ngModel)]="nomesDespesas" />
+    <input type="text"  required="" name="nomesDespesas" [(ngModel)]="nomesDespesas" />
     <label>Membros Despesa</label>
   </div>
   <div class="input-container">
