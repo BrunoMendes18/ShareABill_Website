@@ -13,7 +13,7 @@ export class ExpensesComponent implements OnInit {
   nome ="";
   quanti :number =0;
   tipo: number = 1;
-  grupo_id : number|null= 0;
+  grupo_id : number|null= null;
   quemPagou : number=1;
 
   closepopup :any ;
@@ -191,11 +191,12 @@ export class ExpensesComponent implements OnInit {
         }else{
           this.amigosIds.push({id:this.respostaAmigos[i].user_id1});
         }
-        if(i=this.respostaAmigos.length){
-          this.amigosInfo();
-        }
+
+
       }
       console.log('opa');
+      console.log(this.amigosIds);
+      this.amigosInfo();
     })
     console.log('amigao');
 
@@ -204,7 +205,6 @@ export class ExpensesComponent implements OnInit {
  amigosInfo(){
     console.log('amigos-info');
     console.log(this.amigosIds);
-    console.log(this.amigosIds[0].id);
     console.log('length: ',this.amigosIds.length)
 
     for(let i=0; i<this.amigosIds.length;i++)
@@ -214,7 +214,7 @@ export class ExpensesComponent implements OnInit {
         this.respostaAmigosInfo = arg;
         console.log('--------------');
         console.log(this.respostaAmigosInfo);
-        this.amigosinfo.push({id:this.respostaAmigosInfo[i].id,name:this.respostaAmigosInfo[i].name, email: this.respostaAmigosInfo[i].email});
+        this.amigosinfo.push({id:this.respostaAmigosInfo[0].id,name:this.respostaAmigosInfo[0].name, email: this.respostaAmigosInfo[0].email});
         console.log(this.amigosinfo);
 
       },(error) => {                              //Error callback
@@ -225,8 +225,9 @@ export class ExpensesComponent implements OnInit {
         console.log('Message: ',this.errorMessage.message);
         console.log('Status: ',this.errorMessage.status);
       })
-    }
 
+    }
+    this.amigosIds = [];
   }
 
   addGrupoDespesa(id: number){
