@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
   amigos: any;
   users: any;
   preresultado: any;
-  eOuN: any = "verdade";
+  eOuN: any = "falso";
 
   constructor(private pedir : MainService ,router: Router) { this.router = router }
 
@@ -45,12 +45,12 @@ export class FormComponent implements OnInit {
             if(this.amigos.length > 0) {
 
               for (let j = 0; j < this.amigos.length; j++) {
-                if(this.users[i].id != this.amigos[j].user_id1 && this.users[i].id != this.amigos[j].user_id2) {
-                  this.eOuN = 'false';
+                if(this.users[i].id == this.amigos[j].user_id1 || this.users[i].id == this.amigos[j].user_id2) {
+                  this.eOuN = 'verdade';
                 }
               }
 
-              if(this.eOuN == 'false') {
+              if(this.eOuN == 'falso') {
                 this.pedir.verUser(this.users[i].id).subscribe(argU => {
                   if(this.resultado == undefined) {
                     this.resultado = argU
@@ -58,9 +58,12 @@ export class FormComponent implements OnInit {
                     this.preresultado = argU;
                     this.resultado = [...this.resultado, ...this.preresultado]
                   }
+                },(error) => {                              //Error callback
+                  console.error('error caught in component')
+                  this.pedir.errorResponse = error;
+                  this.router.navigate(['/code']);
                 })
-                this.eOuN = 'verdade'
-              }
+              } else { this.eOuN = 'falso' }
 
             } else {
                 this.pedir.verUser(this.users[i].id).subscribe(argU => {
@@ -70,12 +73,25 @@ export class FormComponent implements OnInit {
                     this.preresultado = argU;
                     this.resultado = [...this.resultado, ...this.preresultado]
                   }
-                })
+                },(error) => {                              //Error callback
+                  console.error('error caught in component')
+                  this.pedir.errorResponse = error;
+                  this.router.navigate(['/code']);
+                }
+              )
             }
           }
         }
 
-      })
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
+      });
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
   }
 
@@ -100,6 +116,10 @@ export class FormComponent implements OnInit {
       console.log(this.resultado)
 
       this.ngOnInit();
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
 
   }

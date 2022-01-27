@@ -72,6 +72,10 @@ export class FriendsComponent implements OnInit {
                   this.preresultado = argU;
                   this.resultado = [...this.resultado, ...this.preresultado]
                 }
+              },(error) => {                              //Error callback
+                console.error('error caught in component')
+                this.pedir.errorResponse = error;
+                this.router.navigate(['/code']);
               })
               this.eOuN = 'falso';
             }
@@ -79,7 +83,15 @@ export class FriendsComponent implements OnInit {
           } else this.resultado.nome = 'Não tem amigos';
         }
       }
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
   }
 
@@ -87,6 +99,10 @@ export class FriendsComponent implements OnInit {
     if(confirm('Tens que a certeza que queres remover este amigo?')){
       this.pedir.deleteAmigo(id).subscribe(res=>{
         this.verAmigos();
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
       })
     }
   }

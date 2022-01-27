@@ -143,6 +143,7 @@ export class GrupoComponent implements OnInit {
   }
 
   eliminarGrupo() {
+    console.log('Oi?')
     this.pedir.eliminarGrupo().subscribe(arg => {
       console.log(arg)
       localStorage.removeItem('idGrupo');
