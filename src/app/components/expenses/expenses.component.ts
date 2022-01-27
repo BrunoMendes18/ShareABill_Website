@@ -25,6 +25,8 @@ export class ExpensesComponent implements OnInit {
 
   resultadoDespesa:any;
 
+  respostaDelete:any;
+
   despesas:any;
 
   nomesDespesas:any ="";
@@ -49,6 +51,7 @@ export class ExpensesComponent implements OnInit {
   ngOnInit(): void {
     this.closepopup =document.getElementById('close');
     this.popup  = document.getElementById('box');
+    this.verDespesas();
   }
 
   adicionarDespesa(){
@@ -118,7 +121,16 @@ export class ExpensesComponent implements OnInit {
 
   eleminarDespesas(id_desp:number){
     console.log('eleminar despesa');
-
+    this.pedir.removerDespesav1(id_desp).subscribe(arg =>{
+      this.respostaDelete = arg;
+      console.log('here23');
+      this.verDespesas();
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.errorMessage = error;
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
+    })
   }
 
   verGrupos(){

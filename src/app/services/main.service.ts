@@ -16,7 +16,6 @@ export class MainService {
   linkAmigos = "api/v1/amigos/";
   linkUsers = "api/v1/users/";
   linkMembrosGrupo = "api/v1/membroGrupo/";
-  linkMembrosDespesa = "api/v1/membroDespesa/"
 
   userToken : string | null ="";
   userId: any;
@@ -188,6 +187,18 @@ export class MainService {
       })
     };
     const teste = this.http.post(this.linkMembrosDespesa,{ user_id: userID, desp_id: despId, deve: quanti } ,httpOptions);
+    return teste;
+  }
+
+  removerDespesav1(despId:number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    const link = this.linkDespesas+despId;
+    const teste = this.http.delete(link ,httpOptions);
     return teste;
   }
 
