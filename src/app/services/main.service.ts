@@ -188,6 +188,18 @@ export class MainService {
     return teste;
   }
 
+  removerDespesav1(despId:number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    const link = this.linkDespesas+despId;
+    const teste = this.http.delete(link ,httpOptions);
+    return teste;
+  }
+
   verGrupo () {
     const httpOptions = {
       headers: new HttpHeaders({
