@@ -57,6 +57,10 @@ export class OutrascontasComponent implements OnInit {
                 }
               }
             }
+          },(error) => {                              //Error callback
+            console.error('error caught in component')
+            this.pedir.errorResponse = error;
+            this.router.navigate(['/code']);
           });
         }
       }

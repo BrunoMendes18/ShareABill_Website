@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
       else {
         this.router.navigate(['/home']);
       }
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     })
   }
 

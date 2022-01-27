@@ -51,7 +51,17 @@ export class ExpensesComponent implements OnInit {
   ngOnInit(): void {
     this.closepopup =document.getElementById('close');
     this.popup  = document.getElementById('box');
+    this.quemPagou = this.pedir.userId;
+
     this.verDespesas();
+  }
+  clearFormData(){
+    this.nome ="";
+  this.quanti =0;
+  this.tipo= 1;
+  this.grupo_id= null;
+  this.nomesDespesas = "";
+  this.quemPagou= this.pedir.userId;
   }
 
   adicionarDespesa(){
@@ -62,6 +72,8 @@ export class ExpensesComponent implements OnInit {
       console.log('--------------');
       console.log(this.resultadoDespesa);
       console.log(this.resultadoDespesa.id);
+      this.clearFormData();
+      if(this.membrosDespesas.length>=1)
       this.addMembros(this.resultadoDespesa.id,this.resultadoDespesa.quanti,this.resultadoDespesa.tipo);
 
     },(error) => {                              //Error callback
@@ -71,6 +83,8 @@ export class ExpensesComponent implements OnInit {
       this.router.navigate(['/code']);
     })
 
+
+    this.closePopup();
 
   }
 
@@ -100,13 +114,16 @@ export class ExpensesComponent implements OnInit {
           this.router.navigate(['/code']);
         })
     }
-
+    this.verDespesas();
   }
 
   verDespesas(){
     console.log('ver despesa');
     this.pedir.seeDespesav1().subscribe(arg =>{
       this.despesas = arg;
+      if(this.despesas.length<1){
+        this.despesas = [{id:-1,nome:'Não tem nenhuma despesa ainda',pago:-1,grupo_id: -2,tipo: -1}];
+      }
       console.log('heello');
       console.log(arg);
       console.log(this.despesas);

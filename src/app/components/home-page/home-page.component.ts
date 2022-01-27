@@ -39,6 +39,10 @@ export class HomePageComponent implements OnInit {
     this.pedir.seeGrupos()
     .subscribe(arg => {
       this.grupos = arg;
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
   }
 
@@ -62,6 +66,10 @@ export class HomePageComponent implements OnInit {
     .subscribe(arg => {
       this.idGrupo = arg;
       this.verGrupos();
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
 
   }
@@ -70,6 +78,10 @@ export class HomePageComponent implements OnInit {
     if (teste.length >= 3) {
       this.pedir.pesquisarGrupo(teste).subscribe(arg => {
         this.grupos = arg;
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
       });
     } else {
       this.verGrupos();

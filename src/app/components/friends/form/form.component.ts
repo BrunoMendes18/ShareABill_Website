@@ -83,6 +83,10 @@ export class FormComponent implements OnInit {
     if (teste.length >= 3) {
       this.pedir.pesquisarUser(teste).subscribe(arg => {
         this.resultado = arg;
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
       });
     } else {
       this.verUsers();
