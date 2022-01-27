@@ -1,21 +1,22 @@
-<input id="input" type="text" name=""/> 
+<div class="espacamento"></div>
 
 
-<div id="divAmigo1" *ngFor="let u of resultado">
-    <h2 id="texto1">{{u.user_id2}}</h2>
+<input id="input" type="text" name=""/>
 
-    <p id="email1">{{u.user_id2}}</p>
+<div class="direita">
+  <div id="divAmigo1" *ngFor="let u of resultado">
+    <h2 id="texto1">{{u.name}}</h2>
+
+    <p id="email1">{{u.email}}</p>
     <img id="user" src="assets/user.png">
-    <button id="botao3" type="button" (click)="apagarAmigo(u.user_id2)"> <img id="close" src="assets/close.png"/></button>
+    <button id="botao3" type="button" (click)="apagarAmigo(u.id)"> <img id="close" src="assets/close.png"/></button>
+</div>
 </div>
 
+<div class="esquerda">
+  <button id="botao2" type="button" > <img id="lupa" src="assets/lupa.png" height ="40" width="40" /></button>
+  <button id="botao1" type="button" > <img id="filter" src="assets/filter.png" height ="40" width="40" /></button>
 
 
-
-
-<button id="botao2" type="button" > <img id="lupa" src="assets/lupa.png" height ="40" width="40" /></button>
-<button id="botao1" type="button" > <img id="filter" src="assets/filter.png" height ="40" width="40" /></button>
-
-
-<button id="botao" type="button" [routerLink]="['/form']"> <img src="assets/add-user.png" height ="40" width="40" /></button>
-
+  <button id="botao" type="button" [routerLink]="['/form']"> <img src="assets/add-user.png" height ="40" width="40" /></button>
+</div>

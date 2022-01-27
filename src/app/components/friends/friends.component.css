@@ -1,5 +1,5 @@
 #botao{
-    position: absolute; 
+    position: absolute;
     width: 50px;
     height: 50px;
     margin-top: -23.5vh;
@@ -10,7 +10,7 @@
 }
 
 #botao1{
-    position: absolute; 
+    position: absolute;
     width: 50px;
     height: 50px;
     margin-top: -32.5vh;
@@ -21,7 +21,7 @@
 }
 
 #botao2{
-    position: absolute; 
+    position: absolute;
     width: 50px;
     height: 50px;
     margin-top: -41.5vh;
@@ -32,7 +32,7 @@
 }
 
 #botao3{
-    position: absolute; 
+    position: absolute;
     width: 50px;
     height: 50px;
     margin-top: -5.5vh;
@@ -43,7 +43,7 @@
 }
 
 #user{
-    position: absolute; 
+    position: absolute;
     width: 50px;
     height: 50px;
     margin-top: -8vh;
@@ -51,7 +51,7 @@
 }
 
 #close{
-    position: absolute; 
+    position: absolute;
     width: 40px;
     height: 40px;
     margin-top: -5vh;
@@ -59,7 +59,7 @@
 }
 
 #input{
-    position: relative; 
+    position: relative;
     margin-top: 12.5vh;
     margin-left: 60vh;
     width: 650px;
@@ -67,11 +67,11 @@
 }
 
 #divAmigo1{
-    position: relative; 
+    position: relative;
     border-radius: 12.5px;
   background: #DCDCDC;
   width: 650px;
-  height: 100px;  
+  height: 100px;
   margin-top: 5vh;
   margin-left: 60vh;
 }
@@ -86,4 +86,15 @@
     position: relative;
     margin-top: 1.5vh;
     margin-left: 15vh;
+}
+
+.espacamento {
+  height: 75px;
+}
+
+.direita {
+  width: 75%;
+}
+.esquerda {
+  width: 25%;
 }

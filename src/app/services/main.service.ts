@@ -81,7 +81,7 @@ export class MainService {
       })
     };
 
-    return this.http.delete(this.linkAmigos +id , httpOptions);
+    return this.http.delete(this.linkAmigos + this.userId + '/' + id , httpOptions);
   }
 
   AddAmigo(id1:number,id2:number) {
