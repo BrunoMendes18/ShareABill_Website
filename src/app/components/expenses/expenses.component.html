@@ -19,6 +19,8 @@
 
             </div>
         </div>
+
+          <h1 id="del" (click)="eleminarDespesas(x.id)">X</h1>
       </div>
 
       <div class="breaker"></div>
@@ -45,6 +47,8 @@
     <button id="adicionarDespesa" (click)="teste()" >Adicionar Despesa</button>
     <button id="verDespesa" (click)="verDespesas()" >Ver Despesas</button>
     <button id="verGrupos" (click)="verGrupos()" >Ver Grupos</button>
+    <button id="addAmigos" (click)="addAmigos()" >Add amigos</button>
+    <button id="verAmigos" (click)="verAmigos()" >Ver amigos</button>
   </div>
 
   <div class="box-side">
@@ -55,6 +59,16 @@
         <h2>{{x.nome}}</h2>
         <h3>{{x.desc}}</h3>
         <button class="btnadd" (click)="addGrupoDespesa(x.id)">Add me miau</button>
+      </div>
+
+    </div>
+
+    <div *ngFor="let x of amigosinfo">
+
+      <div class="side-box am" >
+        <h2>{{x.name}}</h2>
+        <h3>{{x.email}}</h3>
+        <button class="btnadd" (click)="addAmigoDespesa(x.id,x.name)">Add me nya</button>
       </div>
 
     </div>
@@ -82,8 +96,12 @@
     <label>Como dividir a despesa</label>
   </div>
   <div class="input-container">
-    <input type="text" required="" name="grupo_id" [(ngModel)]="grupo_id" />
+    <input type="text" readonly required="" name="grupo_id" [(ngModel)]="grupo_id" />
     <label>Grupo(opcional)</label>
+  </div>
+  <div class="input-container">
+    <input type="text" readonly required="" name="nomesDespesas" [(ngModel)]="nomesDespesas" />
+    <label>Membros Despesa</label>
   </div>
   <div class="input-container">
     <input type="text" required="" name="quemPagou" [(ngModel)]="quemPagou" />
