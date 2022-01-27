@@ -92,9 +92,7 @@ export class MainService {
       })
     };
 
-    const link = this.linkAmigos + '1/' + this.userId + '/' + this.userId2;
-
-    return this.http.post(link, ({ id1:this.userId,id2:this.userId2 }), httpOptions);
+    return this.http.post(this.linkAmigos, ({ user_id1: id1, user_id2: id2 }), httpOptions);
   }
 
   seeUsers(){
