@@ -21,6 +21,11 @@ export class RegistarComponent implements OnInit {
     .subscribe(arg => {
       console.log("registrou" + arg);
       console.log(arg);
+      this.router.navigate(['/login']);
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     })
   }
 

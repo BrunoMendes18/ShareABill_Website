@@ -51,6 +51,7 @@ export class ExpensesComponent implements OnInit {
   ngOnInit(): void {
     this.closepopup =document.getElementById('close');
     this.popup  = document.getElementById('box');
+
     this.verDespesas();
   }
 
@@ -107,6 +108,9 @@ export class ExpensesComponent implements OnInit {
     console.log('ver despesa');
     this.pedir.seeDespesav1().subscribe(arg =>{
       this.despesas = arg;
+      if(this.despesas.length<1){
+        this.despesas = [{id:-1,nome:'Não tem nenhuma despesa ainda',pago:-1,grupo_id: -2,tipo: -1}];
+      }
       console.log('heello');
       console.log(arg);
       console.log(this.despesas);

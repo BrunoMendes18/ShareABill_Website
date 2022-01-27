@@ -67,6 +67,10 @@ export class GrupoComponent implements OnInit {
         this.eliminar = 'block';
       }
 
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
 
     this.verDespesasOutros();
@@ -96,6 +100,10 @@ export class GrupoComponent implements OnInit {
                 this.despesas[i].estado = 'não pertence';
               }
             }
+          },(error) => {                              //Error callback
+            console.error('error caught in component')
+            this.pedir.errorResponse = error;
+            this.router.navigate(['/code']);
           })
         }
       }
@@ -122,6 +130,10 @@ export class GrupoComponent implements OnInit {
       if(deve <= this.deve && deve > 0) {
         this.pedir.liquidarConta(idDesp, deve).subscribe(arg => {
           console.log(arg);
+        },(error) => {                              //Error callback
+          console.error('error caught in component')
+          this.pedir.errorResponse = error;
+          this.router.navigate(['/code']);
         })
       } else {
         alert('Valor Inválido')
@@ -135,6 +147,10 @@ export class GrupoComponent implements OnInit {
       console.log(arg)
       localStorage.removeItem('idGrupo');
       this.router.navigate(['/home'])
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
   }
 
@@ -143,6 +159,10 @@ export class GrupoComponent implements OnInit {
         console.log(arg);
         localStorage.removeItem('idGrupo');
         this.router.navigate(['/home'])
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
       })
   }
 
@@ -156,11 +176,19 @@ export class GrupoComponent implements OnInit {
     this.pedir.seeAmigos().subscribe(arg => {
       this.dadosAmigos = arg;
       console.log('Adicionar membros');
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     })
 
     this.pedir.verMembrosGrupo().subscribe(arg => {
       console.log(arg);
       this.dadosUsers = arg
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     })
 
     this.verUtilizador(+1);
@@ -181,6 +209,10 @@ export class GrupoComponent implements OnInit {
         console.log(arg);
         this.dadosUsers = arg
         this.verUtilizador(-1);
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
       })
     } else {
       this.usersStyleR = 'none';
@@ -223,6 +255,10 @@ export class GrupoComponent implements OnInit {
                   this.user = argU;
                   this.users = [...this.users, ...this.user]
                 }
+              },(error) => {                              //Error callback
+                console.error('error caught in component')
+                this.pedir.errorResponse = error;
+                this.router.navigate(['/code']);
               })
 
             }
@@ -235,6 +271,10 @@ export class GrupoComponent implements OnInit {
                 this.user = argU;
                 this.users = [...this.users, ...this.user]
               }
+            },(error) => {                              //Error callback
+              console.error('error caught in component')
+              this.pedir.errorResponse = error;
+              this.router.navigate(['/code']);
             })
           }
       }
@@ -248,6 +288,10 @@ export class GrupoComponent implements OnInit {
               this.user = argU;
               this.users = [...this.users, ...this.user]
             }
+          },(error) => {                              //Error callback
+            console.error('error caught in component')
+            this.pedir.errorResponse = error;
+            this.router.navigate(['/code']);
           })
         }
       }
@@ -260,6 +304,10 @@ export class GrupoComponent implements OnInit {
     this.pedir.adicionarMGrupo(iD).subscribe(arg => {
       console.log('Adicionado?')
       console.log(arg)
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
     this.adicionarMembros(0);
   }
@@ -268,6 +316,10 @@ export class GrupoComponent implements OnInit {
     this.pedir.sairGrupo(iD).subscribe(arg => {
       console.log('Removido?')
       console.log(arg)
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
     this.removerMembros(0);
   }
@@ -285,6 +337,10 @@ export class GrupoComponent implements OnInit {
         console.log(arg);
         this.ngOnInit();
         this.atualizarGrupo(0);
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
       })
     }
   }

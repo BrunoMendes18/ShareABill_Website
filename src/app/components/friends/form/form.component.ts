@@ -34,6 +34,10 @@ export class FormComponent implements OnInit {
     .subscribe(data => {
       this.resultado=data;
       console.log(this.resultado)
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
   }
 
@@ -41,6 +45,10 @@ export class FormComponent implements OnInit {
     if (teste.length >= 3) {
       this.pedir.pesquisarUser(teste).subscribe(arg => {
         this.resultado = arg;
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
       });
     } else {
       this.verUsers();
@@ -52,6 +60,10 @@ export class FormComponent implements OnInit {
     .subscribe(arg => {
       this.resultado=arg;
       console.log(this.resultado)
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
 
   }

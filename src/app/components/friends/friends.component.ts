@@ -44,6 +44,10 @@ export class FriendsComponent implements OnInit {
       this.verUsers()
 
 
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
   }
 
@@ -52,6 +56,10 @@ export class FriendsComponent implements OnInit {
     .subscribe(data => {
       this.resultado1=data;
       console.log(this.resultado1)
+    },(error) => {                              //Error callback
+      console.error('error caught in component')
+      this.pedir.errorResponse = error;
+      this.router.navigate(['/code']);
     });
   }
 
@@ -60,13 +68,17 @@ export class FriendsComponent implements OnInit {
       this.pedir.deleteAmigo(id).subscribe(res=>{
         this.verAmigos();
         console.log(id)
+      },(error) => {                              //Error callback
+        console.error('error caught in component')
+        this.pedir.errorResponse = error;
+        this.router.navigate(['/code']);
       })
     }
   }
 
-  
 
 
-  
+
+
 
 }
