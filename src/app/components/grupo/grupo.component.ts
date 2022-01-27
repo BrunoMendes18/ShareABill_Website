@@ -23,6 +23,10 @@ export class GrupoComponent implements OnInit {
   fromStyle: string = "none";
   addValor: any = 0;
   remValor: any = 0;
+  membrosDesp: any;
+  deveStyle: string = "none";
+  deve: any;
+  despesaId: any;
 
   nome: any;
   desc: any;
@@ -30,10 +34,10 @@ export class GrupoComponent implements OnInit {
   constructor(private pedir: MainService ,router: Router) { this.router = router }
 
   ngOnInit(): void {
-    window.onbeforeunload = () => {
+    /* window.onbeforeunload = () => {
       localStorage.removeItem('idGrupo');
       return '';
-    };
+    }; */
 
     this.tipoPagina = localStorage.getItem('idGrupo');
 
@@ -71,13 +75,59 @@ export class GrupoComponent implements OnInit {
 
   verDespesasOutros() {
     this.pedir.verDespesasGrupo().subscribe(arg => {
-      console.log(arg);
       this.despesas = arg;
+      console.log(this.despesas);
+
+      for (let i = 0; i < this.despesas.length; i++) {
+
+        if(this.despesas[i].pago == this.pedir.userId) {
+          this.despesas[i].estado = 'recebe';
+        } else {
+          this.pedir.verMembrosDesp(this.despesas[i].id).subscribe(argU => {
+            console.log('argU')
+            console.log(argU)
+            this.membrosDesp = argU;
+
+            for (let j = 0; j < this.membrosDesp.length; j++) {
+              if(this.membrosDesp[j].user_id == this.pedir.userId) {
+                this.despesas[i].estado = 'paga';
+                this.despesas[i].deve = this.membrosDesp[j].deve;
+              } else {
+                this.despesas[i].estado = 'não pertence';
+              }
+            }
+          })
+        }
+      }
+
+      console.log(this.despesas);
+
     });
   }
 
-  verDespesa(id: any) {
-    console.log('Not Working ' + id);
+  liquidar(tipo: any, idDesp: any, deve: any) {
+    if (tipo == 'paga') {
+      if (this.deveStyle == 'none') {
+        this.deveStyle = 'inline-block';
+
+        this.deve = deve;
+        this.despesaId = idDesp;
+
+      } else this.deveStyle = 'none';
+    } else if (tipo == 'confirmar') {
+      console.log('-- dados --')
+      console.log(idDesp)
+      console.log(deve)
+      console.log('-- -- --')
+      if(deve <= this.deve && deve > 0) {
+        this.pedir.liquidarConta(idDesp, deve).subscribe(arg => {
+          console.log(arg);
+        })
+      } else {
+        alert('Valor Inválido')
+      }
+
+    }
   }
 
   eliminarGrupo() {

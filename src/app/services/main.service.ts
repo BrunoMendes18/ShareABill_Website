@@ -279,4 +279,17 @@ export class MainService {
     return this.http.get(link, httpOptions);
   }
 
+  liquidarConta(idDesp :any, quantia: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+
+    const link = this.linkMembrosDespesa + this.userId + '/' + idDesp;
+
+    return this.http.put(link, ({ deve: quantia }),httpOptions);
+  }
+
 }
