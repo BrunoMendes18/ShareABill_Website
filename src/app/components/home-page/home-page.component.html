@@ -1,20 +1,25 @@
-<div class="oi"></div>
+<div class="principal">
+  <div class="esquerda">
+    <div class="grupo" *ngFor="let x of grupos" (click)="verGrupo(x.id)">
+      <h1>{{x.nome}}</h1>
+      <h3>{{x.desc}}</h3>
+    </div>
 
-<div class="grupo" *ngFor="let x of grupos" (click)="verGrupo(x.id)">
-  <h1>{{x.nome}}</h1>
-  <h3>{{x.desc}}</h3>
-</div>
-
-<div class="grupo" (click)="verGrupo(0)">
-  <h1>Contas não associadas</h1>
-</div>
-
-<button (click)="verGrupo(-1)">Criar Grupo</button>
-<input (input)='pesquisa(pesquisar.value)' #pesquisar placeholder="Pesquisar Grupo">
-<button [routerLink]="['/expenses']">Despesa</button>
-
-<div [ngStyle]="{display: display}" class="formGrupo">
-  <input [(ngModel)]="name" type="text" placeholder="Name" required>
-  <input [(ngModel)]="desc" type="text" placeholder="Descrição" required>
-  <button (click)="criarGrupo()">Registar</button>
+    <div class="grupo" (click)="verGrupo(0)">
+      <h1>Contas não associadas</h1>
+    </div>
+  </div>
+  <div class="direita">
+    <button (click)="verGrupo(-1)">Criar Grupo</button>
+    <input (input)='pesquisa(pesquisar.value)' #pesquisar placeholder="Pesquisar Grupo">
+    <button [routerLink]="['/expenses']">Despesa</button>
+  </div>
+  <div class="alinhas">
+    <div [ngStyle]="{display: display}" class="formGrupo">
+      <input [(ngModel)]="name" type="text" placeholder="Name" required>
+      <input [(ngModel)]="desc" type="text" placeholder="Descrição" required>
+      <button (click)="criarGrupo()">Registar</button>
+      <button (click)="verGrupo(-1)">Cancelar</button>
+    </div>
+  </div>
 </div>
