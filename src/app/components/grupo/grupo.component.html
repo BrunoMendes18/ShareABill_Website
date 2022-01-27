@@ -1,49 +1,55 @@
-<div class="espacamento"></div>
+<div class="principal">
+  <div class="esquerda">
+    <h1>{{dadosGrupo[0].nome}}</h1>
+    <h3>{{dadosGrupo[0].desc}}</h3>
 
-<div class="esquerda">
-  <h1>{{dadosGrupo[0].nome}}</h1>
-  <h3>{{dadosGrupo[0].desc}}</h3>
+    <hr>
 
-  <div class="grupo" *ngFor="let x of despesas">
-    <h2>{{x.nome}}</h2>
-    <h3>{{x.quanti}} €</h3>
-    <a (click)="liquidar(x.estado, x.id, x.deve)"><p>{{x.estado}} - {{x.deve}}€</p></a>
-  </div>
-</div>
-
-<div class="direita">
-  <button [ngStyle]="{display: eliminar}" (click)="eliminarGrupo()">Eliminar</button>
-  <button [ngStyle]="{display: eliminar}" (click)="atualizarGrupo(0)">Atualizar</button>
-  <button (click)="sairGrupo()">Sair</button>
-  <button (click)="adicionarMembros(addValor)">Adicionar Membros</button>
-  <button [ngStyle]="{display: eliminar}" (click)="removerMembros(remValor)">Remover Membros</button>
-
-  <div [ngStyle]="{display: usersStyleR}">
-    <div class="grupo" *ngFor="let x of users">
-      <h3>{{x.name}}</h3>
-      <p>{{x.id}}</p>
-      <button (click)="removerMembro(x.id)">Remover</button>
+    <div class="despesa" *ngFor="let x of despesas">
+      <h2>{{x.nome}}</h2>
+      <h3>{{x.quanti}} €</h3>
+      <a (click)="liquidar(x.estado, x.id, x.deve)"><p>{{x.estado}} - {{x.deve}}€</p></a>
     </div>
   </div>
 
-  <div [ngStyle]="{display: usersStyleA}">
-    <div class="grupo" *ngFor="let x of users">
-      <h3>{{x.name}}</h3>
-      <p>{{x.id}}</p>
-      <button (click)="adicionarMembro(x.id)">Adicionar</button>
-    </div>
+  <div class="direita">
+    <button [ngStyle]="{display: eliminar}" (click)="eliminarGrupo()">Eliminar</button>
+    <button [ngStyle]="{display: eliminar}" (click)="atualizarGrupo(0)">Atualizar</button>
+    <button (click)="sairGrupo()">Sair</button>
+    <button (click)="adicionarMembros(addValor)">Adicionar Membros</button>
+    <button [ngStyle]="{display: eliminar}" (click)="removerMembros(remValor)">Remover Membros</button>
   </div>
 
-  <div [ngStyle]="{display: fromStyle}">
-    <input type='text' [(ngModel)]="nome">
-    <input type='text' [(ngModel)]="desc">
-    <button (click)="atualizarGrupo(1)">Registar</button>
-</div>
-<div [ngStyle]="{display: deveStyle}">
-  <input type="number" placeholder="Ficou a deve quanto?" #deves>
-  <button (click)="liquidar('confirmar', despesaId, deves.value)">Confirmar</button>
-</div>
+  <div class="alinhas">
+    <div [ngStyle]="{display: usersStyleR}" class="formGrupo">
+      <button (click)="removerMembros(remValor)">Cancelar</button>
+      <div class="grupo" *ngFor="let x of users">
+        <h3>{{x.name}}</h3>
+        <p>{{x.id}}</p>
+        <button (click)="removerMembro(x.id)">Remover</button>
+      </div>
+    </div>
+
+    <div [ngStyle]="{display: usersStyleA}" class="formGrupo">
+      <button (click)="adicionarMembros(addValor)">Cancelar</button>
+        <div class="grupo" *ngFor="let x of users">
+        <h3>{{x.name}}</h3>
+        <p>{{x.id}}</p>
+        <button (click)="adicionarMembro(x.id)">Adicionar</button>
+      </div>
+    </div>
 
 
-</div>
+    <div [ngStyle]="{display: fromStyle}" class="formGrupo">
+      <input type='text' [(ngModel)]="nome">
+      <input type='text' [(ngModel)]="desc">
+      <button (click)="atualizarGrupo(1)">Registar</button>
+      <button (click)="atualizarGrupo(0)">Cancelar</button>
+    </div>
 
+    <div [ngStyle]="{display: deveStyle}" class="formGrupo">
+      <input type="number" placeholder="Ficou a deve quanto?" #deves>
+      <button (click)="liquidar('confirmar', despesaId, deves.value)">Confirmar</button>
+    </div>
+  </div>
+</div>

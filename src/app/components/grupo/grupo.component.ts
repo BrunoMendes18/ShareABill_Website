@@ -74,7 +74,6 @@ export class GrupoComponent implements OnInit {
     });
 
     this.verDespesasOutros();
-    this.adicionarMembros(0);
   }
 
   verDespesasOutros() {
