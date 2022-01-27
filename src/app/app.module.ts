@@ -13,6 +13,7 @@ import { ExpensesComponent } from './components/expenses/expenses.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { FormComponent } from './components/friends/form/form.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
+import { HandleResponseCodesComponent } from './components/handle-response-codes/handle-response-codes.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { GrupoComponent } from './components/grupo/grupo.component';
     HomePageComponent,
     FormComponent,
     GrupoComponent,
+    HandleResponseCodesComponent,
   ],
   imports: [
     BrowserModule,

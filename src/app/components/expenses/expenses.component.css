@@ -56,15 +56,35 @@
 
 #adicionarDespesa{
   position:absolute;
-  bottom:10%;
+  bottom:0%;
   left:20%;
 }
 
 #verDespesa{
   position:absolute;
+  bottom:10%;
+  left:20%;
+}
+
+#verGrupos{
+  position:absolute;
   bottom:20%;
   left:20%;
 }
+
+#addAmigos{
+  position:absolute;
+  bottom:30%;
+  left:20%;
+}
+
+#verAmigos{
+  position:absolute;
+  bottom:40%;
+  left:20%;
+}
+
+
 .box-side{
   height:90vh;
   width:200px;
@@ -97,6 +117,10 @@
   margin-bottom: 10px;
 }
 
+.side-box.am{
+  background-color: gainsboro;
+}
+
 .box-expense{
   border-radius: 12.5px;
   background-color: grey;
@@ -110,6 +134,12 @@ img{
     height: 50px;
     position:absolute;
     top:25%;
+}
+
+#del{
+  position:absolute;
+    top:3%;
+    right:3.25%;
 }
 
 .content{

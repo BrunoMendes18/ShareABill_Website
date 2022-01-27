@@ -12,6 +12,7 @@ export class MainService {
   linkRegistar = "/api/auth/signup";
   linkGrupos = "api/v1/grupo/";
   linkDespesas = "api/v1/despesas/"
+  linkMembrosDespesa = "api/v1/membroDespesa/"
   linkAmigos = "api/v1/amigos/";
   linkUsers = "api/v1/users/";
   linkMembrosGrupo = "api/v1/membroGrupo/";
@@ -20,6 +21,8 @@ export class MainService {
   userId: any;
   userId2: any;
   grupoId: any;
+
+  errorResponse:any;
 
 
   doLogIn(email: string, password: string){
@@ -161,6 +164,30 @@ export class MainService {
     };
 
     return this.http.post(this.linkDespesas,({nome: name,quanti:quantidade,tipo:tipoo,grupo_id:grupoid,pago:qpago}),httpOptions);
+  }
+
+  verAmigoInfov1(id:number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    const link = this.linkUsers + '/1/' + id ;
+    const teste = this.http.get(link, httpOptions);
+    return teste;
+
+  }
+
+  addMembroDespesav1(despId:number,userID:number,quanti:number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer ' + this.userToken,
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    const teste = this.http.post(this.linkMembrosDespesa,{ user_id: userID, desp_id: despId, deve: quanti } ,httpOptions);
+    return teste;
   }
 
   verGrupo () {

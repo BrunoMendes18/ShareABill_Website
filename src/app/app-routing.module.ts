@@ -8,6 +8,7 @@ import { ExpensesComponent } from './components/expenses/expenses.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { FormComponent } from './components/friends/form/form.component';
+import { HandleResponseCodesComponent } from './components/handle-response-codes/handle-response-codes.component';
 
 const routes: Routes = [
   {path: "", component : HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "friends",component: FriendsComponent},
   {path: "expenses",component: ExpensesComponent},
   {path: "form",component: FormComponent},
+  {path: "code",component: HandleResponseCodesComponent},
 ];
 
 @NgModule({
